@@ -1,0 +1,74 @@
+
+It is better to execute the following steps as root:
+
+  $ su
+
+Installing dependencies (you may need to install nodejs manually!):
+
+  # yum install httpd php php-gettext php-PHPMailer git gitk nodejs mysql-server php-mysql
+  # service mysqld start
+  # service httpd start
+  # chkconfig httpd on
+  # chkconfig mysqld on
+
+MySQL installation (you may want to leave the root password not set, remove
+anonymous users, disallow root login remotely, remove test database and reload
+provilege tables):
+
+  # mysql_secure_installation
+
+Creating the database:
+
+  # mysql --default-character-set=utf8 --local-infile -u root
+  mysql> source /var/www/html/reset/doc/commands.sql;
+  mysql> exit
+
+Cloning the Git repository:
+
+  # cd /var/www/html
+  # git clone git@github.com:aereset/website.git /var/www/html/reset
+
+Apache and SELinux configuration:
+
+  # echo -e "127.0.0.1  local.reset.etsii.upm.es" >> /etc/hosts
+  # cp /var/www/html/reset/doc/apache/httpd.conf /etc/httpd/conf.d/local.reset.etsii.upm.es_80.conf
+  # semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/reset/www'
+  # restorecon -v '/var/www/html/reset/www'
+
+Cloning the website contents:
+
+  # git clone https://github.com/aereset/website_contents.git wiki
+
+Modify project permissions (replace <username> with your user name so you will
+not need to be root to make changes in the project):
+
+  # chown -R <username>:<username> /var/www/html/reset
+
+Directories which Apache will own:
+
+  # mkdir -p /var/www/html/reset/www/uploads
+  # chown -R apache:apache /var/www/html/reset/www/uploads
+  # chown -R apache:apache /var/www/html/reset/www/wiki
+
+Restarting Apache service:
+
+  # service httpd restart
+
+Exit root session:
+
+  # exit
+
+Creating the configuration file:
+
+  $ cp /var/www/html/reset/doc/apache/config.php /var/www/html/reset/www
+
+You may want to change "/var/www/html/reset/www/config.php" file with custom
+parameters in order to make everything work in your server. If you change the
+salt field, then you'll need to change the admin password, as the hash was
+generated without any salt the first time.
+
+Generating content:
+
+  $ /var/www/html/reset/www/generate
+  $ /var/www/html/reset/www/wiki_recreate_all
+

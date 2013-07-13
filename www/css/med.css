@@ -1,0 +1,135 @@
+/*********************************** General ***********************************/
+.hide_med {
+	display: none;
+}
+
+/********************************** Aside-Top **********************************/
+#top {
+	padding: .5em 2em .5em 2em;
+}
+#top form label {
+	font-size: 85%;
+}
+
+/******************************* Website's Header ******************************/
+#w_header hgroup {
+	float: left;
+	margin: 0em 0 0em 2em;
+	padding: 2.5em 0 2.5em 15em;
+	background: url(/images/logo_shadow.png) no-repeat scroll center left;
+	background-size: 12em;
+}
+
+/*********************************** Main Nav **********************************/
+#main_nav {
+	float: left;
+	clear: both;
+	border-left: none;
+	margin: 0 0 1em 0;
+	width: 18%;
+}
+/*
+ * For higher resolutions (higher than 1200px), we don't display the
+ * "News" menu (as news are displayed in the third column):
+ * --------------------------------------------------------------------- */
+ @media all and (min-width: 1200px) { .hide_with_r_aside { display: none; } }
+/* --------------------------------------------------------------------- */
+/*
+ * For lower resolutions (lower than 1200px), we change the main nav
+ * width to 23%:
+ * --------------------------------------------------------------------- */
+@media all and (max-width: 1200px) { #main_nav { width: 22%; } }
+/* --------------------------------------------------------------------- */
+#main_nav a.nav_section {
+	font-size: 1.1em;
+	text-align: center;
+	display: block;
+	color: #ccff00;
+}
+#main_nav a.nav_section:hover {
+	text-decoration: none;
+}
+
+/*********************************** Wrapper ***********************************/
+#wrapper {
+	float: left;
+	margin: 0 0 1em 1%;
+	width: 62%;
+}
+/*
+ * For lower resolutions (lower than 1200px), we change the main content
+ * width to 75%:
+ * --------------------------------------------------------------------- */
+@media all and (max-width: 1200px) { #wrapper { width: 75%; } }
+/* --------------------------------------------------------------------- */
+
+/********************************** Aside-right ********************************/
+/*
+ * For lower resolutions (lower than 1200px), we hide the aside content:
+ * --------------------------------------------------------------------- */
+@media all and (max-width: 1200px) { #r_aside { display: none; } }
+/* --------------------------------------------------------------------- */
+#r_aside {
+	float: right;
+	margin: 0 0 1em 0;
+	width: 18%;
+	background: rgba(0, 0, 0, 0.7);
+	border: 1px solid #707070;
+	border-right: none;
+	border-radius: 1em 0 0 1em;
+}
+#r_aside h3 {
+	padding: .5em 1em .5em 1em;
+	font-size: 1.1em;
+	font-weight: bold;
+	text-align: center;
+	color: #ffbc00;
+}
+#r_aside div.block {
+	padding: .8em;
+}
+#r_aside a {
+	font-style: inherit;
+	color: #006699;
+}
+#r_aside a:visited {
+	color: #5C669A;
+}
+#r_aside a.news_link {
+	display: block;
+	margin: 0.5em;
+	font-style: italic;
+	text-align: right;
+}
+#r_aside article {
+	margin: .5em;
+	font-size: 85%;
+	color: #ffffff;
+}
+#r_aside article h1 {
+	margin-bottom: .4em;
+	font-size: 120%;
+	font-weight: bold;
+}
+#r_aside section hr {
+	margin-bottom: 1em;
+}
+
+/************************************ Footer ***********************************/
+#w_footer {
+	padding-top: 2em;
+	background-image: linear-gradient(bottom, rgba(0,0,0,100) 80%, rgba(0,0,0,0) 100%);
+	background-image: -o-linear-gradient(bottom, rgba(0,0,0,100) 80%, rgba(0,0,0,0) 100%);
+	background-image: -moz-linear-gradient(bottom, rgba(0,0,0,100) 80%, rgba(0,0,0,0) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,100) 80%, rgba(0,0,0,0) 100%);
+	background-image: -ms-linear-gradient(bottom, rgba(0,0,0,100) 80%, rgba(0,0,0,0) 100%);
+}
+#w_footer #footer_lists {
+	max-width: 42em;
+	margin: 0 auto;
+}
+#w_footer div.footer_nav {
+	float: left;
+	width: 17em;
+	margin: 2em;
+}

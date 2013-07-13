@@ -1,0 +1,53 @@
+/***************************** Hide extra content ******************************/
+#top, #main_nav, #r_aside, #footer_lists, #canvas_bg, #social_networks {
+	display: none;
+}
+
+/******************************** General rules ********************************/
+body {
+	margin: 0pt;
+	color: black;
+}
+a.printme:after {
+	color: blue;
+	content: " {" attr(href) "}";
+}
+#w_header a:after,
+#crumbs_nav a:after {
+	content: "";
+}
+video,
+iframe {
+	display: none;
+}
+
+/******************************* Print styling *********************************/
+#w_header {
+	padding-bottom: 5pt;
+	border-bottom: 1px solid #000000;
+}
+#w_header h1,
+#w_header h2 {
+	text-align: center;
+	font-size: 2em;
+}
+#wrapper {
+	margin: 20pt 5pt 20pt 5pt;
+}
+#content {
+	font-size: 0.9em;
+}
+#content > header h1,
+#content > header h2 {
+	text-align: center;
+	font-size: 1.5em;
+}
+#content article h1,
+#content article h2 {
+	font-weight: normal;
+	font-size: 1.5em;
+}
+p.copyright {
+	background: none;
+	font-size: 10pt;
+}

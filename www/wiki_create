@@ -1,0 +1,98 @@
+#!/bin/bash
+
+#
+#  wiki_create
+#
+#  Copyright 2012 Miguel Sánchez de León Peque <msdeleonpeque@gmail.com>
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 3 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#  MA 02110-1301, USA.
+#
+
+#
+# This script generates an HTML file for the given .reset wiki file in
+# the build directory.
+#
+# Usage:
+#
+#   $ wiki_create </path/to/wiki_file.xx.reset>
+#
+# This will create the HTML file:
+#
+#   build/path/to/wiki_file.xx.html
+#
+# Out of the wiki file:
+#
+#   wiki/path/to/wiki_file.xx.reset
+#
+# If the target path or the target HTML file do not exist, it will
+# create them, if the file already exists, then it will be overwritten.
+#
+# It assumes the files in the wiki directory are already verified and,
+# therefore, there will not be any conflict when generating the HTMLs
+# in the build dir. This script is designed to be executed by PHP, after
+# performing those verifications, to avoid problems.
+#
+
+
+if [[ $# != 1 ]]; then
+	echo "Error, file parameter expected!" >&2
+	echo "Usage: wiki_create </path/to/wiki_file.xx.reset>" >&2
+	echo "Notice '/' in '/path' means the 'wiki/' directory."
+	exit
+fi
+
+script_dir=$(dirname $(readlink -f $0))
+wiki_dir="$script_dir/wiki"
+templates_dir="$script_dir/data/templates"
+build_dir="$script_dir/build"
+gen_dir="$script_dir/gen"
+
+# Prepare file and directory
+dirname=$(dirname $1)
+filename=$(basename $1 | cut -d. -f1)
+language=$(basename $1 | cut -d. -f2)
+gen_file=$build_dir$dirname/$filename.$language.html
+
+echo "Generating $dirname/$filename.$language.html"
+mkdir -p $build_dir$dirname
+
+# Get content information
+file_data=$(cat $wiki_dir/$1 | grep -e "^%[[:space:]]*[A-Z]*=.*$")
+
+file_data_title=$(echo "$file_data" | grep "% TITLE=" | sed -e "s/% TITLE=\(.*\)/\1/")
+file_data_subtitle=$(echo "$file_data" | grep "% SUBTITLE=" | sed -e "s/% SUBTITLE=\(.*\)/\1/")
+file_data_description=$(echo "$file_data" | grep "% DESCRIPTION=" | sed -e "s/% DESCRIPTION=\(.*\)/\1/")
+file_data_keywords=$(echo "$file_data" | grep "% KEYWORDS=" | sed -e "s/% KEYWORDS=\(.*\)/\1/")
+
+# Add header and navigation sections
+cat $templates_dir/header.$language.html           | \
+	sed "s/%%title%%/${file_data_title}/g"       | \
+	sed "s/%%keywords%%/${file_data_keywords}/g"    | \
+	sed "s/%%description%%/${file_data_description}/g" >  $gen_file
+cat $templates_dir/nav.$language.html >> $gen_file
+
+# Parse content
+echo "<section id=\"content\"><header><hgroup><h1>${file_data_title}</h1><h2>${file_data_subtitle}</h2></hgroup></header>" >> $gen_file
+echo "$(cat $wiki_dir/$1 | node $gen_dir/parse_file.js)" >> $gen_file
+echo "<footer><p class=\"section_title\">${file_data_title}</p></footer></section>" >> $gen_file
+
+# Add aside and footer sections
+cat $templates_dir/aside.$language.html >> $gen_file
+cat $templates_dir/footer.$language.html >> $gen_file
+
+# Process completed
+echo "Generation complete!"
+

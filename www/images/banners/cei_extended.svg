@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="600.78656"
+   height="317.19986"
+   id="svg3835"
+   version="1.1"
+   inkscape:version="0.48.1 r9760"
+   sodipodi:docname="cei_extended.svg"
+   inkscape:export-filename="./cei_extended.png"
+   inkscape:export-xdpi="28.37328"
+   inkscape:export-ydpi="28.37328">
+  <defs
+     id="defs3837">
+    <filter
+       inkscape:collect="always"
+       id="filter4549"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.670625"
+         id="feGaussianBlur4551" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="265.66078"
+     inkscape:cy="84.598221"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1686"
+     inkscape:window-height="804"
+     inkscape:window-x="34"
+     inkscape:window-y="49"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata3840">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Logo CEI"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(8.4054999,-743.72469)">
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none;display:inline;filter:url(#filter4549)"
+       d="m 149.504,725.49621 c -50.5,12.625 -101,25.25 -151.5,37.875 0,17.70833 0,35.41667 0,53.125 16.66667,4.16667 33.33333,8.33333 50,12.5 0,6.80208 0,13.60417 0,20.40625 -16.66657,-4.00039 -33.33392,-7.99754 -50,-12 0,18.03125 0,36.0625 0,54.09375 14.58333,3.64583 29.16667,7.29167 43.75,10.9375 -14.58333,3.64583 -29.16667,7.29167 -43.75,10.9375 0,17.70833 0,35.41667 0,53.125 16.66667,4.16667 33.33333,8.33333 50,12.5 0,25.33329 0,50.66669 0,75.99999 51.33333,-12.8333 102.66667,-25.6667 154,-38.5 0,-67.70832 0,-135.41666 0,-203.12499 -31.25,-7.8125 -62.5,-15.625 -93.75,-23.4375 14.58333,-3.64583 29.16667,-7.29167 43.75,-10.9375 0,-18.04167 0,-36.08333 0,-54.125 -0.83333,0.20833 -1.66667,0.41667 -2.5,0.625 z m -1.5,222.90625 c -12.52083,-3 -25.04167,-6 -37.5625,-9 12.52083,-3.13542 25.04167,-6.27083 37.5625,-9.40625 0,6.13542 0,12.27083 0,18.40625 z"
+       id="path3773-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="./cei.png"
+       inkscape:export-xdpi="27.692308"
+       inkscape:export-ydpi="27.692308"
+       transform="matrix(1,0,0,0.92493198,0,79.196475)" />
+    <path
+       style="fill:#a0cd01;fill-opacity:1;stroke:none;display:inline"
+       d="m 0,971.6284 150,-34.68495 0,-46.24662 -50,11.56165 0,-92.4932 50,-11.56165 0,-46.24659 -150,34.68493 0,46.2466 50,-11.56164 0,92.4932 -50,11.56167 z"
+       id="path3773"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccc"
+       inkscape:export-filename="./cei.png"
+       inkscape:export-xdpi="27.692308"
+       inkscape:export-ydpi="27.692308" />
+    <path
+       style="fill:#398bc5;fill-opacity:1;stroke:none;display:inline"
+       d="m 150,889.30938 0,1.38742 0,-23.1233 -150,-34.68495 0,-46.2466 200,46.24658 0,184.98647 -200,-46.24664 0,-46.24662 150,33.29754 0,1.38741 0,-24.51071 0,1.38741 -150,-34.68494 0,-46.2466 z"
+       id="path3782"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccccc"
+       inkscape:export-filename="./cei.png"
+       inkscape:export-xdpi="27.692308"
+       inkscape:export-ydpi="27.692308" />
+    <path
+       style="fill:#9c0063;fill-opacity:1;stroke:none;display:inline"
+       d="m 50,1052.5599 150,-34.6849 0,-46.24666 -100,23.1233 0,-92.49319 100,-23.1233 0,-46.2466 -150,34.68493 z"
+       id="path3770"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc"
+       inkscape:export-filename="./cei.png"
+       inkscape:export-xdpi="27.692308"
+       inkscape:export-ydpi="27.692308" />
+    <path
+       style="fill:#e66b0b;fill-opacity:1;stroke:none;display:inline"
+       d="m 200,1017.875 -150,34.6849 0,-69.36989 z"
+       id="path3811"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="./cei.png"
+       inkscape:export-xdpi="27.692308"
+       inkscape:export-ydpi="27.692308" />
+    <text
+       xml:space="preserve"
+       style="font-size:64px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#f9f9f9;fill-opacity:1;stroke:none;font-family:Sans"
+       x="243.22481"
+       y="845.2641"
+       id="text3903"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="./cei.png"
+       inkscape:export-xdpi="27.692308"
+       inkscape:export-ydpi="27.692308"><tspan
+         sodipodi:role="line"
+         id="tspan3905"
+         x="243.22481"
+         y="845.2641">Centro de</tspan><tspan
+         sodipodi:role="line"
+         x="243.22481"
+         y="925.2641"
+         id="tspan3907">Electrónica</tspan><tspan
+         sodipodi:role="line"
+         x="243.22481"
+         y="1005.2641"
+         id="tspan3909">Industrial</tspan></text>
+  </g>
+</svg>

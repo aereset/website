@@ -1,0 +1,110 @@
+#!/bin/bash
+
+#
+#  generate
+#
+#  Copyright 2012 Miguel Sánchez de León Peque <msdeleonpeque@gmail.com>
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 3 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#  MA 02110-1301, USA.
+#
+
+
+function build_file {
+
+	last_template_modification=$(stat -c %Y ${templates_dir}* | sort -n | tail -n 1)
+
+	while read pipe_line; do
+
+		# Variable reset
+		file_data_array=('','','','');
+
+		# Prepare file and directory
+		dirname=$(dirname $pipe_line)
+		filename=$(basename $pipe_line | cut -d. -f1)
+		language=$(basename $pipe_line | cut -d. -f2)
+		extension=$(basename $pipe_line | cut -d. -f3)
+		if [ "$extension" == "reset" ]; then
+			gen_file=$build_dir$dirname/$filename.$language.html
+		else
+			gen_file=$build_dir$dirname/$filename.$language.$extension
+		fi
+
+		if [[ -f $gen_file ]]; then
+			last_build_modification=$(stat -c %Y $gen_file)
+			if [[ $last_template_modification -le $last_build_modification ]]; then
+				if [[ $(stat -c %Y $content_dir$pipe_line) -le $last_build_modification ]]; then
+					continue
+				fi
+			fi
+		fi
+
+		echo Generating $gen_file
+		mkdir -p $build_dir$dirname
+
+		# Get content information
+		file_data=$(cat $content_dir$pipe_line | grep -e "^%[[:space:]]*[A-Z]*=.*$")
+
+		file_data_title=$(echo "$file_data" | grep "% TITLE=" | sed -e "s/% TITLE=\(.*\)/\1/")
+		file_data_subtitle=$(echo "$file_data" | grep "% SUBTITLE=" | sed -e "s/% SUBTITLE=\(.*\)/\1/")
+		file_data_description=$(echo "$file_data" | grep "% DESCRIPTION=" | sed -e "s/% DESCRIPTION=\(.*\)/\1/")
+		file_data_keywords=$(echo "$file_data" | grep "% KEYWORDS=" | sed -e "s/% KEYWORDS=\(.*\)/\1/")
+
+		# Add header and navigation sections
+		cat ${templates_dir}header.$language.html           | \
+			sed "s/%%title%%/${file_data_title}/g"       | \
+			sed "s/%%keywords%%/${file_data_keywords}/g"    | \
+			sed "s/%%description%%/${file_data_description}/g" >  $gen_file
+		cat ${templates_dir}nav.$language.html              >> $gen_file
+
+		# Parse content
+		if [ "$extension" == "reset" ]; then
+			echo "<section id=\"content\"><header><hgroup><h1>${file_data_title}</h1><h2>${file_data_subtitle}</h2></hgroup></header>" >> $gen_file
+			echo "$(cat $content_dir$pipe_line | node $(dirname $0)/gen/parse_file.js)" >> $gen_file
+			echo "<footer><p class=\"section_title\">${file_data_title}</p></footer></section>" >> $gen_file
+		else
+			cat $content_dir$pipe_line >> $gen_file
+		fi
+
+		# Add aside and footer sections
+		cat ${templates_dir}aside.$language.html  >> $gen_file
+		cat ${templates_dir}footer.$language.html >> $gen_file
+
+	done
+
+}
+
+
+content_dir="$(dirname $0)/data/content/"
+templates_dir="$(dirname $0)/data/templates/"
+build_dir="$(dirname $0)/build/"
+
+if [[ $# == 1 ]]; then
+	echo $1 | build_file
+	echo "Generation complete!"
+	exit
+fi
+
+mkdir -p $(dirname $0)/build
+cp -r $(dirname $0)/css $(dirname $0)/build
+cp -r $(dirname $0)/images $(dirname $0)/build
+cp -r $(dirname $0)/js $(dirname $0)/build
+cp -r $(dirname $0)/uploads $(dirname $0)/build
+cat $(dirname $0)/gen/wiki2html.js | sed -e 's/exports.wiki2html.*/function wiki2html(wikicode)/' >> $(dirname $0)/build/js/wiki2html.js
+
+find $content_dir -type f | sed "s@^$content_dir@@" | build_file
+
+echo "Generation complete!"
+

@@ -1,0 +1,8 @@
+www/build/
+www/forum/
+www/uploads/
+www/wiki/
+www/config.php
+*~
+*-access_log
+*-error_log

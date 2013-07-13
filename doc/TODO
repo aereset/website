@@ -1,0 +1,17 @@
+=====================================================================
+1.x
+=====================================================================
+
+ * Use make to generate the website
+ * Online content edition for registered users
+ * Use type-maps instead of multiviews for language negociation
+ * Fix all PHP pages: review error log to find errors/warnings
+
+=====================================================================
+Future ideas (for the long term)
+=====================================================================
+
+ * Local search engine instead of Google's
+ * Make the most beautiful design and use JavaScript for eye candy
+ * Paypal donations for the association and/or proyects
+

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="200"
+   height="325"
+   id="svg3835"
+   version="1.1"
+   inkscape:version="0.48.1 r9760"
+   sodipodi:docname="New document 6">
+  <defs
+     id="defs3837" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="67.160325"
+     inkscape:cy="139.97588"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="902"
+     inkscape:window-height="706"
+     inkscape:window-x="215"
+     inkscape:window-y="74"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata3840">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Logo CEI"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-727.3622)">
+    <path
+       style="fill:#a0cd01;fill-opacity:1;stroke:none;display:inline"
+       d="m 0,964.86222 150,-37.5 0,-50.00002 -50,12.5 0,-100 50,-12.5 0,-50 -150,37.49998 0,50 50,-12.49998 0,100 -50,12.50002 z"
+       id="path3773"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccc" />
+    <path
+       style="fill:#398bc5;fill-opacity:1;stroke:none;display:inline"
+       d="m 150,875.86214 0,1.50002 0,-25 -150,-37.5 0,-50 200,49.99998 0,200.00006 -200,-50.00002 0,-50.00002 150,35.99998 0,1.50002 0,-26.50002 0,1.50002 -150,-37.5 0,-50 z"
+       id="path3782"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccccc" />
+    <path
+       style="fill:#9c0063;fill-opacity:1;stroke:none;display:inline"
+       d="m 50,1052.3622 150,-37.5 0,-50.00004 -100,25 0,-100 100,-25 0,-50 -150,37.49998 z"
+       id="path3770"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       style="fill:#e66b0b;fill-opacity:1;stroke:none;display:inline"
+       d="m 200,1014.8622 -150,37.5 0,-75.00002 z"
+       id="path3811"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+  </g>
+</svg>

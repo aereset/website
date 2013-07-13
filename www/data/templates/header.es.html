@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>%%title%%</title>
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="%%keywords%%" />
+	<meta name="description" content="%%description%%" />
+	<link rel="stylesheet" href="/css/base.css" media="all" />
+	<link rel="stylesheet" href="/css/low.css" media="handheld, screen and (max-width: 900px)" />
+	<link rel="stylesheet" href="/css/med.css" media="screen and (min-width: 901px)" />
+	<link rel="stylesheet" href="/css/hig.css" media="screen and (min-width: 1500px)" />
+	<!--[if lt IE 9]>
+	  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	  <link rel="stylesheet" href="/css/med.css" media="all" />
+	<![endif]-->
+	<link rel="stylesheet" href="/css/print.css" media="print" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5" />
+	<script src="/js/canvas.js"></script>
+	<link rel="shortcut icon" href="/images/logo_mini.png" />
+</head>
+<body>
+<canvas id="canvas_bg"></canvas>
+<script src="/js/support.js"></script>
+<aside id="top">
+	<form id="lang_sel" method="get" action="./">
+		<select id="lang_sel_options" name="lang" title="Cambia el idioma de la página">
+			<option lang="en" value="en">en - English</option>
+			<option lang="es" value="es" selected="selected">es - Español</option>
+		</select>
+		<input id="lang_change_button" class="button" type="submit" value="Change" />
+	</form>
+	<form id="search_form" class="hide_low" accept-charset="utf-8" method="get" action="/es/search/">
+		<label for="form_search_input">Búsqueda: </label>
+		<input type="search" placeholder="Search in this website" name="search_for" id="form_search_input" title="Escribe para buscar en esta página" required="required" />
+		<input type="submit" value="Ir" />
+	</form>
+	<ul>
+		<li class="hide_med"><a href="/es/search/" title="Busca en esta página web">Buscar</a></li>
+		<li><a href="/es/my_account/" title="Mi cuenta">Mi cuenta</a></li>
+	</ul>
+</aside>
+<script src="/js/header_aside.js"></script>
+<header id="w_header">
+	<a href="/es/" title="Página de inicio">
+		<hgroup>
+			<h1>Reset</h1>
+			<h2>Asociación de estudiantes</h2>
+		</hgroup>
+	</a>
+</header>
+<script src="/js/social.js"></script>

@@ -1,0 +1,81 @@
+<section id="content">
+	<header>
+		<form class="edit">
+			<fieldset>
+				<div class="form_wrapper">
+					<input type="hidden" name="type" value="form_type_sent" />
+					<input type="submit" value="Source" accesskey="s" href="#" onclick="return show('codePage');"/>
+					<input type="submit" value="Preview" accesskey="p" href="#" onclick="return show('previewPage');"/>
+				</div>
+			</fieldset>
+		</form>
+		<hgroup>
+			<h1>Wiki-Reset Editor (beta)</h1>
+			<h2>Build this website by writing wiki-Reset code!</h2>
+		</hgroup>
+	</header>
+	<article>
+		<div id="codePage">
+			<form class="code" action="#" method="post">
+				<textarea id="code">
+=Title=
+----
+
+You can insert an image [[File:/pool/tux_matrix_group.png|thumb|alt=tux|Matrix Tux]]
+
+==Subsection==
+
+* first item
+* second item
+
+This is a link to our website: [http://reset.etsii.upm.es Reset Website]
+
+? This is an information label
+
+?? This is a warning label
+
+??? This is an error label
+
+You can insert Youtube videos [Youtube:lthRmB2ew9k]
+
+And create tables
+{|
+! Header 1
+! Header 2
+! Header 3
+|-
+| row 1, cell 1
+| row 1, cell 2
+| row 1, cell 3
+|-
+| row 2, cell 1
+| row 2, cell 2
+| row 2, cell 3
+|-
+| row 3, cell 1
+| row 3, cell 2
+| row 3, cell 3
+|}
+
+Even make your text '''bold''' or ''italic'' :P
+
+Well, we are developing this parser in JavaScript. This fact allow us to execute it in the server with nodejs and in a web browser (even without internet connection!).
+
+We hope to use this  framework to open the development of the website content as soon as posible.
+
+For this, we'll be happy to receive some feedback from you: aereset@gmail.com.
+
+===Thanks!===
+		</textarea>
+			</form>
+		</div>
+		<div id="previewPage">
+			<div id="preview">
+				<p>Nothing to show</p>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<p class="section_title">Wiki-Reset Editor (beta)</p>
+	</footer>
+</section>
