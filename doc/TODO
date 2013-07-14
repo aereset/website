@@ -1,17 +1,80 @@
 =====================================================================
+0.x
+=====================================================================
+
+ * Update permissions in the database (decide which permissions should exist).
+ * Online content edition for registered users.
+ * Admin user should have all permissions set to 1 after installation. Or,
+   perhaps it is better to just give it permissions to create any kind of
+   invitations.
+ * JS (AJAX?) should be used to get the HTML for the news that will be displayed
+   in the column on the right. Those news would be generated server-side with
+   PHP. Maybe you can only download it the first time and then be stored in the
+   cache?
+
+=====================================================================
 1.x
 =====================================================================
 
- * Use make to generate the website
- * Online content edition for registered users
- * Use type-maps instead of multiviews for language negociation
- * Fix all PHP pages: review error log to find errors/warnings
+ * JS could be used to generate a "Log out" button on the top-right, next to
+   "My account" when the user starts a session.
+ * JS parser should be finished and all the content should be in pure wiki
+   format.
+ * System configuration tab for admin account. After initial installation, if
+   the config file can be edited by Apache, then a new tab appears in the admin
+   account that would allow to change system configuration and test those
+   changes. There would be an option to finish configuration, which would write
+   all the changes to the config file (notice this should reset admin password
+   as well with the new salt!). Then the configuration file should be changed
+   to read-only mode and set root user as its owner. The read only mode will
+   prevent the system configuration tab to even appear in the admin account.
+ * Password tab in "My account" should be "Settings" tab instead. There you
+   would find also your personal information (if provided) and, perhaps, you
+   would be able to change your nick name from time to time... Also you should
+   be able to upload an avatar for your user.
+ * In the invitations tab, a list of the user generated invitations should be
+   displayed. This way it is easy to know if your invitation was already used
+   and may prevent invitations stealing...
+ * Canvas background should be optimized for mobile web. Either should use a
+   static background or generate hexagons only for the first few rows.
+
+=====================================================================
+2.x
+=====================================================================
+
+ * Most of the content in the website shoud be in wiki format, but projects and
+   workshops should be in a more standard format and should be part of the
+   database!
+ * Permissions should be set to add and/or modify projects and workshops. Also
+   ownership is important to set who could edit that content.
+ * Information that should be stored: who created the project/workshop, who can
+   edit this information (collaborators), date of creation, last modification,
+   expiration, tags...
+ * Filter pages, although do not require an active session will be created with
+   PHP then, fetching the data from the database and displaying it correctly to
+   the visitor.
+
+=====================================================================
+3.x
+=====================================================================
+
+ * Canvas backgound (hexagons) should be reviewed and optimized a lot.
+ * Use make to generate the website. (Optimizations for generating the dinamic
+   and static contents server-side; it should be as fast as possible and should
+   avoid generating unnecessary contents).
+ * Use type-maps instead of multiviews for language negociation.
+ * Fix all PHP pages: review error log to find errors/warnings.
+ * Invitations should have a verification code. Perhaps the hash of the
+   invitation_key plus the system salt.
+ * Tables should have different permissions for different users. We should
+   prevent injection int tables such as users, invitations, permissions and logs
+   this way.
 
 =====================================================================
 Future ideas (for the long term)
 =====================================================================
 
- * Local search engine instead of Google's
- * Make the most beautiful design and use JavaScript for eye candy
- * Paypal donations for the association and/or proyects
+ * Local search engine instead of Google's.
+ * Make the most beautiful design and use JavaScript for eye candy.
+ * Paypal donations for the association and/or proyects.
 
