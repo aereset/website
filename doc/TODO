@@ -4,9 +4,6 @@
 
  * Update permissions in the database (decide which permissions should exist).
  * Online content edition for registered users.
- * Admin user should have all permissions set to 1 after installation. Or,
-   perhaps it is better to just give it permissions to create any kind of
-   invitations.
  * JS (AJAX?) should be used to get the HTML for the news that will be displayed
    in the column on the right. Those news would be generated server-side with
    PHP. Maybe you can only download it the first time and then be stored in the
