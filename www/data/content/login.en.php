@@ -25,12 +25,6 @@
 		</hgroup>
 		<hr />
 	</header>
-	<p>
-		If you are a student, use your <strong>registration number</strong> as <em>User</em> and your <strong>ID</strong> as <em>Password</em> (including zeros and excluding the verification letter).
-		<p>
-		If you cannot log in, email: <em>alta@induforum.es</em>
-		</p>
-	</p>
 
 <?php
 
@@ -59,19 +53,8 @@
 	} else {
 
 		if (!isset($_SESSION['user_do_not_have_permissions'])) {
-			if ($_SESSION['admin_permissions']) {
-				header('Location: /en/my_account/');
-				exit;
-			} else if ($_SESSION['student_permissions']) {
-				header('Location: /en/students/participate/');
-				exit;
-			} else if ($_SESSION['company_permissions']) {
-				header('Location: /en/companies/database/');
-				exit;
-			} else {
-				header('Location: /en/my_account/');
-				exit;
-			}
+			header('Location: /en/my_account/');
+			exit;
 		} else {
 			header('Location: /en/undef-permissions/');
 			exit;

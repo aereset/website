@@ -1,0 +1,153 @@
+#page_wrapper {
+	width: 100%;
+	border: none;
+}
+#wrapper {
+	width: auto;
+	margin: 0;
+}
+#content_edition {
+	clear: both;
+	float: left;
+	width: 47%;
+	margin: 0 1%;
+	background: #ffffff;
+	border: 1px solid #707070;
+	box-shadow: 0em 0em 1em 0em #F0F0F0;
+}
+#content {
+	width: 48%;
+	margin: 0 1%;
+	float: right;
+	clear: none;
+}
+#content_edition > header,
+#content_edition > footer {
+	padding: .5em;
+	clear: both;
+	color: #ffffff;
+	font-size: 150%;
+	background: #000000;
+	font-weight: bold;
+}
+#content_edition p {
+	margin: 1em 3%;
+}
+#content_edition article {
+	margin: 2%;
+	background: #ffffff;
+}
+#content_edition form.wiki_edit {
+	margin: 0 1em 0 0;
+	float: right;
+}
+#content_edition form.wiki_edit fieldset {
+	padding: 0;
+	border: none;
+}
+#content_edition form.wiki_edit_cmd textarea,
+#content_edition form.wiki_edit_cmd textarea:hover,
+#content_edition form.wiki_edit_cmd textarea:focus {
+	height: 6em;
+	border: 1px solid #2d832d;
+	color: #2d832d;
+	background-color: #e1ffe1;
+	border-radius: .5em;
+}
+#content_edition form.wiki_edit hr {
+	margin: 0 0 1em 0;
+	width: 90%;
+}
+#content_edition form.wiki_edit #en_column,
+#content_edition form.wiki_edit #es_column {
+	float: left;
+	width: 50%;
+}
+#content_edition form.wiki_edit label {
+	clear: both;
+}
+#content_edition form.wiki_edit input {
+	float: left;
+	width: 80%;
+}
+#content_edition form.wiki_edit textarea {
+	float: left;
+	margin: 1em 0 2em 0;
+	width: 95%;
+	height: 30em;
+}
+#content_edition p.section_title {
+	font-size: 80%;
+	text-align: right;
+	margin: 0;
+}
+#content_edition p.error {
+	padding: .3em .5em;
+	border: 1px solid #c30000;
+	color: #c30000;
+	background-color: #fbebeb;
+	border-radius: .5em;
+}
+#content_edition form {
+	margin: 2em 0 2em 0;
+}
+#content_edition form fieldset {
+	padding: 1em;
+	border: 1px solid #585858;
+	border-radius: 1em;
+}
+#content_edition form legend {
+	margin: .3em;
+	padding: 0 .5em 0 .4em;
+	color: #585858;
+}
+#content_edition form div.form_wrapper {
+	clear: both;
+	padding: 3em 0;
+}
+#content_edition form label {
+	display: block;
+	margin-top: .3em;
+	font-size: .8em;
+	font-weight: bold;
+	font-style: normal;
+}
+#content_edition form input,
+#content_edition form textarea,
+#content_edition form select {
+	display: block;
+	margin: .3em 0;
+	font-size: .9em;
+	width: 60%;
+	padding: .3em;
+	border: 1px solid #585858;
+	border-radius: .5em;
+}
+#content_edition form input[type="submit"] {
+	margin-top: 1em;
+	width: 8em;
+	font-weight: bold;
+}
+#content_edition form input[type=text]:focus,
+#content_edition form textarea:focus {
+	border: 1px solid #005a90;
+	color: #000045;
+	background-color: #f7fcff;
+}
+#content_edition form.code textarea:focus {
+	border: 1px solid #585858;
+	color: #000000;
+}
+#content_edition form textarea {
+	height: 10em;
+	width: 98%;
+	overflow: auto;
+}
+#content_edition form.code textarea {
+	height: 50em;
+	overflow: auto;
+}
+#content_edition form.wiki_edit h1 {
+	font-weight: bold;
+	font-size: 150%;
+}

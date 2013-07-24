@@ -73,13 +73,17 @@ a:hover {
 /*                                        GENERAL                                           */
 /*------------------------------------------------------------------------------------------*/
 body {
+	background: #eeeeee;
+}
+#page_wrapper {
 	width: 100%;
 	color: #585858;
-	background: url('/images/bg_layer1.svg'), linear-gradient(left, #267cad 0%, #091440 100%);
-	background: url('/images/bg_layer1.svg'), -o-linear-gradient(left, #267cad 0%, #091440 100%);
-	background: url('/images/bg_layer1.svg'), -moz-linear-gradient(left, #267cad 0%, #091440 100%);
-	background: url('/images/bg_layer1.svg'), -webkit-linear-gradient(left, #267cad 0%, #091440 100%);
-	background: url('/images/bg_layer1.svg'), -ms-linear-gradient(left, #267cad 0%, #091440 100%);
+	background: #267cad;
+	background: linear-gradient(left, #267cad 0%, #091440 100%);
+	background: -o-linear-gradient(left, #267cad 0%, #091440 100%);
+	background: -moz-linear-gradient(left, #267cad 0%, #091440 100%);
+	background: -webkit-linear-gradient(left, #267cad 0%, #091440 100%);
+	background: -ms-linear-gradient(left, #267cad 0%, #091440 100%);
 }
 form input {
 	background: #ffffff;
@@ -623,48 +627,6 @@ time.news_pubdate {
 #content form {
 	margin: 2em 0 2em 0;
 }
-#content form.edit {
-	margin: 0 1em 0 0;
-	float: right;
-}
-#content form.wiki_edit_cmd textarea,
-#content form.wiki_edit_cmd textarea:hover,
-#content form.wiki_edit_cmd textarea:focus {
-	height: 6em;
-	border: 1px solid #2d832d;
-	color: #2d832d;
-	background-color: #e1ffe1;
-	border-radius: .5em;
-}
-#content form.wiki_edit hr {
-	margin: 0 0 1em 0;
-	width: 90%;
-}
-#content form.wiki_edit #left_column {
-	float: left;
-	width: 50%;
-}
-#content form.wiki_edit #right_column {
-	float: right;
-	width: 50%;
-}
-#content form.wiki_edit label {
-	clear: both;
-}
-#content form.wiki_edit input {
-	float: left;
-	width: 80%;
-}
-#content form.wiki_edit textarea {
-	float: left;
-	margin: 1em 0 2em 0;
-	width: 95%;
-	height: 30em;
-}
-#content form.edit fieldset {
-	padding: 0;
-	border: none;
-}
 #content form fieldset {
 	padding: 1em;
 	border: 1px solid #585858;
@@ -713,11 +675,6 @@ time.news_pubdate {
 	margin-top: 1em;
 	width: 8em;
 	font-weight: bold;
-}
-#content form.edit input[type="submit"] {
-	margin: 0 1em;
-	float: left;
-	background: #ffffff;
 }
 #content form input[type=text]:focus,
 #content form input[type=text]:hover,

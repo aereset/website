@@ -89,5 +89,5 @@ function canvas_redraw_background()
 	}
 }
 
-window.onload = canvas_draw_background;
-window.onresize = canvas_redraw_background;
+//window.onload = canvas_draw_background;
+//window.onresize = canvas_redraw_background;

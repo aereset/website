@@ -62,8 +62,8 @@ create table permissions(
 	user int unsigned not null primary key,
 	admin bool default 0,
 	invitations bool default 0,
-	statistics bool default 0,
 	banners bool default 0,
+	news bool default 0,
 	wiki bool default 0
 );
 
@@ -73,11 +73,6 @@ create table user_info(
 	surname char(60) not null,
 	birth date not null,
 	country char(20) not null,
-	province char(20) not null,
-	city char(20) not null,
-	street char(50) not null,
-	zip char(20) not null,
-	phone char(20) not null,
 	email char(50) not null
 );
 
@@ -89,4 +84,4 @@ insert into users (id,password) values ('admin','c7ad44cbad762a5da0a452f9e854fdc
 --
 -- Set permissions to user "admin.
 --
-insert into permissions (user,admin,invitations,statistics,banners,wiki) values ('1','1','1','1','1','1');
+insert into permissions (user,admin,invitations,banners,news,wiki) values ('1','1','1','1','1','1');

@@ -25,12 +25,6 @@
 		</hgroup>
 		<hr />
 	</header>
-	<p>
-		Si eres estudiante, utiliza tu <strong>número de matrícula</strong> como <em>Usuario</em> y tu <strong>DNI</strong> como <em>Contraseña</em> (incluyendo ceros y excluyendo la letra de verificación).
-		<p>
-		Si no puedes acceder envía un correo a: <em>alta@induforum.es</em>
-		</p>
-	</p>
 
 <?php
 
@@ -59,19 +53,8 @@
 	} else {
 
 		if (!isset($_SESSION['user_do_not_have_permissions'])) {
-			if ($_SESSION['admin_permissions']) {
-				header('Location: /my_account/?lang=es');
-				exit;
-			} else if ($_SESSION['student_permissions']) {
-				header('Location: /es/students/participate/');
-				exit;
-			} else if ($_SESSION['company_permissions']) {
-				header('Location: /es/companies/database/');
-				exit;
-			} else {
-				header('Location: /es/my_account/');
-				exit;
-			}
+			header('Location: /en/my_account/');
+			exit;
 		} else {
 			header('Location: /es/undef-permissions/');
 			exit;

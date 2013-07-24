@@ -1,6 +1,8 @@
 /*********************************** General ***********************************/
-body {
+#page_wrapper {
 	text-align:center;
 	margin: 0 auto;
 	width: 1450px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
 }

@@ -31,9 +31,6 @@
 	if (isset($_SESSION['invitations_permissions']) && $_SESSION['invitations_permissions']) {
 		echo '<li class="current">Invitar</li>';
 	}
-	if (isset($_SESSION['statistics_permissions']) && $_SESSION['statistics_permissions']) {
-		echo '<li><a href="/es/my_account/statistics/">Estadísticas</a></li>';
-	}
 	if (isset($_SESSION['admin_permissions']) && $_SESSION['admin_permissions']) {
 		echo '<li><a href="/es/my_account/administration/">Administración</a></li>';
 	}
@@ -69,28 +66,6 @@
 
 	}
 
-	if (isset($_SESSION['company_permissions']) && $_SESSION['company_permissions'] == 1) {
-
-?>
-
-				<input name="company" id="form_company" value="1" type="checkbox" />
-				<label for="form_company" class="checkbox_label">El usuario es una compañía</label>
-
-<?php
-
-	}
-
-	if (isset($_SESSION['student_permissions']) && $_SESSION['student_permissions'] == 1) {
-
-?>
-
-				<input name="student" id="form_student" value="1" type="checkbox" />
-				<label for="form_student" class="checkbox_label">El usuario es un estudiante</label>
-
-<?php
-
-	}
-
 	if (isset($_SESSION['invitations_permissions']) && $_SESSION['invitations_permissions'] == 1) {
 
 ?>
@@ -102,12 +77,12 @@
 
 	}
 
-	if (isset($_SESSION['statistics_permissions']) && $_SESSION['statistics_permissions'] == 1) {
+	if (isset($_SESSION['news_permissions']) && $_SESSION['news_permissions'] == 1) {
 
 ?>
 
-				<input name="statistics" id="form_statistics" value="1" type="checkbox" />
-				<label for="form_statistics" class="checkbox_label">El usuario puede ver estadísticas de la página web</label>
+				<input name="news" id="form_news" value="1" type="checkbox" />
+				<label for="form_news" class="checkbox_label">El usuario puede editar las noticias de la web</label>
 
 <?php
 

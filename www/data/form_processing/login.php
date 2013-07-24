@@ -53,11 +53,9 @@
 				$row = mysqli_fetch_assoc($query_result);
 
 				$_SESSION['admin_permissions'] = $row['admin'];
-				$_SESSION['company_permissions'] = $row['company'];
-				$_SESSION['student_permissions'] = $row['student'];
 				$_SESSION['invitations_permissions'] = $row['invitations'];
-				$_SESSION['statistics_permissions'] = $row['statistics'];
 				$_SESSION['banners_permissions'] = $row['banners'];
+				$_SESSION['news_permissions'] = $row['news'];
 				$_SESSION['wiki_permissions'] = $row['wiki'];
 
 			} else {

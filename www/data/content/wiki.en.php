@@ -22,6 +22,8 @@
 		exit;
 	}
 
+	if ($page == '/') $page = 'index';
+
 	$aux1 = '/'.$page.'/';
 	$aux2 = preg_replace('@//@', '/', $aux1);
 
@@ -35,7 +37,7 @@
 	// Delete first and last slash
 	$page = preg_replace('@^/(.*)/$@', '\1', $_GET['page']);
 
-	$build_base_name = strstr(getcwd(), '/build', 1).'/data/content/'.$page;
+	$system_base_name = strstr(getcwd(), '/build', 1).'/data/content/'.$page;
 
 	$wiki_base_name = strstr(getcwd(), '/build', 1).'/wiki/'.$page;
 	$wiki_file_en = $wiki_base_name.'.en.reset';
@@ -44,7 +46,7 @@
 	unset($cmd_output);
 	unset($protected_file);
 
-	if (file_exists($build_base_name.'.en.php') || file_exists($build_base_name.'.es.php') || file_exists($build_base_name.'.en.html') || file_exists($build_base_name.'.es.html') || file_exists($build_base_name.'/index.en.php') || file_exists($build_base_name.'/index.es.php') || file_exists($build_base_name.'/index.en.html') || file_exists($build_base_name.'/index.es.html')) {
+	if (file_exists($system_base_name.'.en.php') || file_exists($system_base_name.'.es.php') || file_exists($system_base_name.'.en.html') || file_exists($system_base_name.'.es.html') || file_exists($system_base_name.'/index.en.php') || file_exists($system_base_name.'/index.es.php') || file_exists($system_base_name.'/index.en.html') || file_exists($system_base_name.'/index.es.html')) {
 
 		$protected_file = 1;
 
@@ -119,12 +121,21 @@
 
 ?>
 
-<section id="content">
+<style>
+@import "/css/wiki_edition.css";
+</style>
+
+<script src="/js/wiki2html.js"></script>
+
+<script src="/js/wiki_edition.js"></script>
+
+<section id="content_edition">
 <header>
 	<hgroup>
 		<h1>Edit</h1>
 	</hgroup>
 </header>
+
 <article>
 
 <?php
@@ -136,6 +147,29 @@
 <p class="error">Sorry, you can not edit this file.</p>
 <p>It may be a system file. Remember users can only edit wiki files. Please, select a different one.</p>
 <p>If you think this file should be edited, contact a developer or join the project and help us developing this website!</p>
+
+<script>
+
+	function forbidden_edition() {
+
+		var main_nav = document.getElementById('main_nav');
+		var r_aside = document.getElementById('r_aside');
+
+		main_nav.style.display = 'none';
+		r_aside.style.display = 'none';
+
+		var parsed_content;
+
+		parsed_content = '<header><hgroup><h1>#</h1><h2></h2></hgroup></header>';
+		parsed_content += '<article><p class="centered extra_margin"><img src="/uploads/marx-brothers-404.jpg" alt="marx-brothers-404"></p></article>';
+		parsed_content += '<footer><p class="section_title">#</p></footer>'
+		document.getElementById('content').insertAdjacentHTML("afterBegin", parsed_content);
+
+	}
+
+	window.onload = forbidden_edition;
+
+</script>
 
 <?php
 
@@ -156,7 +190,7 @@
 ?>
 
 <form action="" method="post" class="wiki_edit">
-	<div id="left_column">
+	<div id="en_column">
 		<h1>English</h1>
 		<hr />
 		<label for="form_title_en">Title: <span class="form_required" title="This field is required">*</span></label>
@@ -167,9 +201,9 @@
 		<input name="description_en" id="form_description_en" type="text" required="required" value="<?php if (isset($file_data_en[2])) echo $file_data_en[2]; ?>" />
 		<label for="form_keywords_en">Keywords: <span class="form_required" title="This field is required">*</span></label>
 		<input name="keywords_en" id="form_keywords_en" type="text" required="required" value="<?php if (isset($file_data_en[3])) echo $file_data_en[3]; ?>" />
-		<textarea name="wiki_content_en"><?php if (isset($file_content_en)) echo implode($file_content_en); ?></textarea>
+		<textarea name="wiki_content_en" id="form_wiki_content_en"><?php if (isset($file_content_en)) echo implode($file_content_en); ?></textarea>
 	</div>
-	<div id="right_column">
+	<div id="es_column">
 		<h1>Español</h1>
 		<hr />
 		<label for="form_title_es">Título: <span class="form_required" title="This field is required">*</span></label>
@@ -180,7 +214,7 @@
 		<input name="description_es" id="form_description_es" type="text" required="required" value="<?php if (isset($file_data_es[2])) echo $file_data_es[2]; ?>" />
 		<label for="form_keywords_es">Palabras clave: <span class="form_required" title="This field is required">*</span></label>
 		<input name="keywords_es" id="form_keywords_es" type="text" required="required" value="<?php if (isset($file_data_es[3])) echo $file_data_es[3]; ?>" />
-		<textarea name="wiki_content_es"><?php if (isset($file_content_es)) echo implode($file_content_es); ?></textarea>
+		<textarea name="wiki_content_es" id="form_wiki_content_es"><?php if (isset($file_content_es)) echo implode($file_content_es); ?></textarea>
 	</div>
 	<input  type="hidden" name="type" value="wiki_form" />
 	<input type="submit" value="Save" accesskey="x" />
@@ -197,3 +231,7 @@
 	<p class="section_title">Edit</p>
 </footer>
 </section>
+
+<section id="content">
+</section>
+
