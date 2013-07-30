@@ -3,10 +3,6 @@
 =====================================================================
 
  * Canvas background should be working again...
- * JS (AJAX?) should be used to get the HTML for the news that will be displayed
-   in the column on the right. Those news would be generated server-side with
-   PHP. Maybe you can only download it the first time and then be stored in the
-   cache?
 
 =====================================================================
 1.x
@@ -55,6 +51,7 @@
    translations.
  * Although Gettext should help a lot, even if we don't use it, we MUST reduce
    PHP code duplication in .es and .en pages!!
+ * Port JS files to use jQuery.
 
 =====================================================================
 3.x
