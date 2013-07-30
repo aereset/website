@@ -4,7 +4,7 @@
 
 	// Check user logged in
 	if (!isset($_SESSION['user_id'])) {
-		header('Location: /en/login/');
+		header('Location: /en/login/?referer=/en/wiki/?page='.$_GET['page']);
 		exit;
 	}
 

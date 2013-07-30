@@ -4,7 +4,7 @@
 
 	// Check user logged in
 	if (!isset($_SESSION['user_id'])) {
-		header('Location: /es/login/');
+		header('Location: /es/login/?referer=/es/my_account/password/');
 		exit;
 	}
 

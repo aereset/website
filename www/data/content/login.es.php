@@ -53,7 +53,9 @@
 	} else {
 
 		if (!isset($_SESSION['user_do_not_have_permissions'])) {
-			header('Location: /en/my_account/');
+			if (isset($_GET['referer'])) $referer = $_GET['referer'];
+			else $referer = '/es/my_account/';
+			header('Location: '.$referer);
 			exit;
 		} else {
 			header('Location: /es/undef-permissions/');
