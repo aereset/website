@@ -15,7 +15,7 @@ function display_collaborate() {
 	// UPM
 	collaborate += '<p style="text-align:center;"><a href="http://www.upm.es/" title="Universidad Politécnica de Madrid"><img src="/images/banners/upm.png" alt="upm_logo" /></a></p>';
 
-	document.getElementById('collaborate_block').insertAdjacentHTML("beforeEnd", collaborate);
+	document.getElementById('collaborate_block').innerHTML = collaborate;
 
 }
 
@@ -26,7 +26,7 @@ function display_friends() {
 	// Integra-e
 	friends += '<p style="text-align:center;"><a href="http://www.ieeeuah.org/" title="IEEE - Rama de estudiantes de la UAH"><img src="/images/banners/ieee-uah.png" alt="IEEE - UAH" /></p>';
 
-	document.getElementById('friends_block').insertAdjacentHTML("beforeEnd", friends);
+	document.getElementById('friends_block').innerHTML = friends;
 
 }
 
