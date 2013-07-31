@@ -55,4 +55,6 @@ function display_banners() {
 
 }
 
-window.onload = display_banners;
+window.addEventListener('load', function() {
+	display_banners();
+}, false);

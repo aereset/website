@@ -18,4 +18,6 @@ function edit_page() {
 	document.getElementById('edit_page').style.margin = '1.2em';
 }
 
-window.onload = edit_page;
+window.addEventListener('load', function() {
+	edit_page();
+}, false);
