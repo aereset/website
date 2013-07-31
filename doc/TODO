@@ -8,8 +8,10 @@
 1.x
 =====================================================================
 
+ * 404 error page is loaded in English, even when /es/ is in the URI.
  * JS could be used to generate a "Log out" button on the top-right, next to
-   "My account" when the user starts a session.
+   "My account" when the user starts a session. Also, a "Log in/Register"
+   button could substitute the "My account" link.
  * JS parser should be finished and all the content should be in pure wiki
    format.
  * System configuration tab for admin account. After initial installation, if
