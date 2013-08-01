@@ -5,4 +5,6 @@
 	width: 1450px;
 	border-left: 1px solid black;
 	border-right: 1px solid black;
+	left: 50%;
+	margin-left: -725px;
 }

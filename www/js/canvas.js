@@ -1,13 +1,16 @@
 
-var window_width = window.innerWidth;
+var last_canvas_width = $('#page_wrapper').width();
 
 function canvas_draw_background()
 {
 	var canvas = document.getElementById('canvas_bg');
 
 	// Canvas dimension
-	var canvas_dimx = document.body.clientWidth;
-	var canvas_dimy = document.body.clientHeight;
+	var canvas_dimx = $('#page_wrapper').width();
+	var canvas_dimy = $('#page_wrapper').height();
+
+	// Check if low.css is loaded
+	if ($('.hide_low').css('display') == 'none') canvas_dimy = 200;
 
 	canvas.width = canvas_dimx;
 	canvas.height = canvas_dimy;
@@ -21,7 +24,7 @@ function canvas_draw_background()
 
 		// Hexagon properties
 		var L = 20;                            // L
-		var e = 2*L*(1 - Math.SQRT1_2);      // d from center to center = 2*L
+		var e = 2*L*(1 - Math.SQRT1_2);        // d from center to center = 2*L
 		var Dx = 2*(2*L)*Math.cos(Math.PI/6);  // dx from center to center (separated columns)
 		var Dy = (2*L)*Math.sin(Math.PI/6);    // dy from center to center (all rows)
 		var C = L*Math.cos(Math.PI/3);         // L*cos(PI/3);
@@ -83,11 +86,16 @@ function canvas_draw_background()
 
 function canvas_redraw_background()
 {
-	if (window_width != window.innerWidth) {
+	if (last_canvas_width != $('#page_wrapper').width()) {
 		canvas_draw_background();
-		window_width = window.innerWidth
+		last_canvas_width = $('#page_wrapper').width();
 	}
 }
 
-//window.onload = canvas_draw_background;
-//window.onresize = canvas_redraw_background;
+window.addEventListener('load', function() {
+	canvas_draw_background();
+}, false);
+
+window.addEventListener('resize', function() {
+	canvas_redraw_background();
+}, false);
