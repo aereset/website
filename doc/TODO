@@ -23,8 +23,6 @@
  * In the invitations tab, a list of the user generated invitations should be
    displayed. This way it is easy to know if your invitation was already used
    and may prevent invitations stealing...
- * Canvas background should be optimized for mobile web. Either should use a
-   static background or generate hexagons only for the first few rows.
 
 =====================================================================
 2.x
