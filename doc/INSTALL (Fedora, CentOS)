@@ -3,13 +3,16 @@ It is better to execute the following steps as root:
 
   $ su
 
-Installing dependencies (you may need to install nodejs manually!):
+Installing dependencies (you may need to install nodejs manually! *):
 
   # yum install httpd php php-gettext php-PHPMailer git gitk nodejs mysql-server php-mysql
   # service mysqld start
   # service httpd start
   # chkconfig httpd on
   # chkconfig mysqld on
+
+* If you are running CentOS, you may prefer to install nodejs using the EPEL
+repo (package is named "nodejs" just as in Fedora repos).
 
 MySQL installation (you may want to leave the root password not set, remove
 anonymous users, disallow root login remotely, remove test database and reload
