@@ -1,6 +1,8 @@
-#page_wrapper {
+body #page_wrapper {
 	width: 100%;
 	border: none;
+	left: auto;
+	margin: 0;
 }
 #wrapper {
 	width: 100%;
