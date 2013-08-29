@@ -47,12 +47,16 @@ not need to be root to make changes in the project):
 
   # chown -R <username>:<username> /var/www/html/reset
 
-Directories which Apache will own:
+Directories which Apache will own *:
 
   # mkdir -p /var/www/html/reset/www/uploads
   # chown -R apache:apache /var/www/html/reset/www/uploads
   # chown -R apache:apache /var/www/html/reset/www/wiki
-  # chown -R apache:apache /var/www/html/reset/.git
+
+* For server/production (not developing) instalation, we may prefer to let
+  Apache own the full directory /var/www/html/reset. This way, we will be able
+  to update the website and regenerate any contents directly through the web
+  interface.
 
 Restarting Apache service:
 
@@ -75,10 +79,6 @@ Generating content:
 
   $ /var/www/html/reset/www/generate
   $ /var/www/html/reset/www/wiki_recreate_all
-
-For now on, content should be (re)generated through the web interface:
-
-  $ chown -R apache:apache /var/www/html/reset/www/build
 
 In order to allow our server to send mail, we may need to edit SELinux rules:
 
