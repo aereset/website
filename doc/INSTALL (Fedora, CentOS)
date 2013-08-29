@@ -80,6 +80,10 @@ Generating content:
   $ /var/www/html/reset/www/generate
   $ /var/www/html/reset/www/wiki_recreate_all
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+THE FOLLOWING STEPS ARE FOR SERVER-SETUP ONLY (NOT FOR DEVELOPING)
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 In order to allow our server to send mail, we may need to edit SELinux rules:
 
   # setsebool -P httpd_can_sendmail 1
@@ -88,4 +92,21 @@ In order to allow Apache executing node, we may neet to edit SELinux rules:
 
   # setsebool -P httpd_execmem 1
 
+In order to allow Apache to connect through SSH and do git push:
+
+  # setsebool -P httpd_can_network_connect 1
+  # su - apache
+  $ mkdir /var/www/.ssh
+  $ ssh-keygen
+  ...
+  $ cd /var/www/html/reset/www/
+  $ rm -rf wiki
+  $ git clone git@github.com:aereset/website_contents.git
+  $ cd wiki
+  $ echo '[user]
+        name = aereset-bot
+        email = aereset@gmail.com' >> .git/config
+
+In order to log in as Apache in the terminal, you may need to edit /etc/passwd
+file!
 
