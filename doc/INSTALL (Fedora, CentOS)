@@ -84,4 +84,8 @@ In order to allow our server to send mail, we may need to edit SELinux rules:
 
   # setsebool -P httpd_can_sendmail 1
 
+In order to allow Apache executing node, we may neet to edit SELinux rules:
+
+  # setsebool -P httpd_execmem 1
+
 
