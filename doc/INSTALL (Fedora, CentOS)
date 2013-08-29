@@ -5,7 +5,7 @@ It is better to execute the following steps as root:
 
 Installing dependencies (you may need to install nodejs manually! *):
 
-  # yum install httpd php php-gettext php-PHPMailer git gitk nodejs mysql-server php-mysql
+  # yum install httpd php php-gettext git gitk nodejs mysql-server php-mysql
   # service mysqld start
   # service httpd start
   # chkconfig httpd on
@@ -52,6 +52,7 @@ Directories which Apache will own:
   # mkdir -p /var/www/html/reset/www/uploads
   # chown -R apache:apache /var/www/html/reset/www/uploads
   # chown -R apache:apache /var/www/html/reset/www/wiki
+  # chown -R apache:apache /var/www/html/reset/.git
 
 Restarting Apache service:
 
@@ -74,4 +75,13 @@ Generating content:
 
   $ /var/www/html/reset/www/generate
   $ /var/www/html/reset/www/wiki_recreate_all
+
+For now on, content should be (re)generated through the web interface:
+
+  $ chown -R apache:apache /var/www/html/reset/www/build
+
+In order to allow our server to send mail, we may need to edit SELinux rules:
+
+  # setsebool -P httpd_can_sendmail 1
+
 
