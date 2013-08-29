@@ -44,7 +44,7 @@
 
 	require_once(strstr(getcwd(), '/build', 1).'/data/form_to_db.php');
 
-	if (form_to_db('invite', array('email*', 'admin', 'company', 'student', 'invitations', 'statistics', 'permissions', 'banners'))) {
+	if (form_to_db('invite', array('email*', 'admin', 'invitations', 'banners', 'news', 'wiki'))) {
 
 ?>
 

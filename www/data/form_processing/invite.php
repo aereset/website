@@ -30,7 +30,7 @@
 	$i = 0;
 	$permissions = '';
 	// Check the user has the permissions that will be shared
-	foreach (array('admin', 'company', 'student', 'invitations', 'statistics', 'permissions', 'wiki', 'banners') as $p) {
+	foreach (array('admin', 'invitations', 'banners', 'news', 'wiki') as $p) {
 		if (isset($sd[$p]) && $sd[$p] == 1 && isset($_SESSION[$p.'_permissions']) && $_SESSION[$p.'_permissions'] == 1) {
 			if ($i > 0) $permissions .= ',';
 			$permissions .= $p;
