@@ -78,6 +78,8 @@
 			exec($command, $cmd_output);
 			$command = $wiki_create_script.' /'.$page.'.es.reset 2>&1';
 			exec($command, $cmd_output);
+			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' add '.$page.'.en.reset '.$page.'.es.reset 2>&1';
+			exec($command, $cmd_output);
 			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' commit -m "'.$_SESSION['user_id'].'" '.$page.'.en.reset '.$page.'.es.reset 2>&1';
 			exec($command, $cmd_output);
 			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' push origin master 2>&1';
