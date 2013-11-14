@@ -57,6 +57,9 @@
 		// If form data has been sent, write it to the corresponding file
 		if (isset($_POST['type']) && $_POST['type'] == 'wiki_form') {
 
+			$command = 'mkdir -p $(dirname '.$wiki_base_name.') 2>&1';
+			exec($command, $cmd_output);
+
 			// Write English wiki file
 			file_put_contents($wiki_file_en, '% TITLE='.$_POST['title_en']."\n");
 			file_put_contents($wiki_file_en, '% SUBTITLE='.$_POST['subtitle_en']."\n", FILE_APPEND);
