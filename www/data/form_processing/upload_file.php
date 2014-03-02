@@ -53,7 +53,7 @@
 
 					} else {
 
-						$command = 'rsync -r '.strstr(getcwd(), '/build', 1).'/uploads '.strstr(getcwd(), '/build', 1).'/build ';
+						$command = 'rsync -r --delete '.strstr(getcwd(), '/build', 1).'/uploads '.strstr(getcwd(), '/build', 1).'/build ';
 						exec($command, $cmd_output);
 
 					}
