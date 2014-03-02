@@ -46,15 +46,23 @@
 
 					if ($file_extension != "") $name = $name . '.' . $file_extension;
 
-					if (!move_uploaded_file($_FILES["file"]["tmp_name"], strstr(getcwd(), '/build', 1).'/uploads/'.$name)) {
+					if (!file_exists(strstr(getcwd(), '/build', 1).'/uploads/'.$name)) {
 
-						echo $error_uploading_file;
-						$processing_error = 1;
+						if (!move_uploaded_file($_FILES["file"]["tmp_name"], strstr(getcwd(), '/build', 1).'/uploads/'.$name)) {
 
+							echo $error_uploading_file;
+							$processing_error = 1;
+
+						} else {
+
+							$command = 'rsync -r --delete '.strstr(getcwd(), '/build', 1).'/uploads '.strstr(getcwd(), '/build', 1).'/build ';
+							exec($command, $cmd_output);
+
+						}
 					} else {
 
-						$command = 'rsync -r --delete '.strstr(getcwd(), '/build', 1).'/uploads '.strstr(getcwd(), '/build', 1).'/build ';
-						exec($command, $cmd_output);
+						echo '<p class="error">-- A file already exists with the same name! Please, retry with a different name. --</p>';
+						$processing_error = 1;
 
 					}
 
