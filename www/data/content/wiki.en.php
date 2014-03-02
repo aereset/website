@@ -34,31 +34,51 @@
 		$page = $aux2;
 	}
 
-	// Delete first and last slash
-	$page = preg_replace('@^/(.*)/$@', '\1', $_GET['page']);
+	// Delete last slash from page and guess parent dir
+	$page = preg_replace('@^(/.*)/$@', '\1', $_GET['page']);
+	$dir = preg_replace('@^(.*)(/[^/]*)@', '\1', $page);
 
-	$system_base_name = strstr(getcwd(), '/build', 1).'/data/content/'.$page;
+	$system_page_name = strstr(getcwd(), '/build', 1).'/data/content'.$page;
+	$wiki_page_name = strstr(getcwd(), '/build', 1).'/wiki'.$page;
+	$wiki_dir_name = strstr(getcwd(), '/build', 1).'/wiki'.$dir;
 
-	$wiki_base_name = strstr(getcwd(), '/build', 1).'/wiki/'.$page;
-	$wiki_file_en = $wiki_base_name.'.en.reset';
-	$wiki_file_es = $wiki_base_name.'.es.reset';
+	if (file_exists($wiki_page_name)) {
+		$wiki_file_en = $wiki_page_name.'/index.en.reset';
+		$wiki_file_es = $wiki_page_name.'/index.es.reset';
+	} else {
+		$wiki_file_en = $wiki_page_name.'.en.reset';
+		$wiki_file_es = $wiki_page_name.'.es.reset';
+	}
 
 	unset($cmd_output);
 	unset($protected_file);
+	unset($no_parent);
 
-	if (file_exists($system_base_name.'.en.php') || file_exists($system_base_name.'.es.php') || file_exists($system_base_name.'.en.html') || file_exists($system_base_name.'.es.html') || file_exists($system_base_name.'/index.en.php') || file_exists($system_base_name.'/index.es.php') || file_exists($system_base_name.'/index.en.html') || file_exists($system_base_name.'/index.es.html')) {
+	if (file_exists($system_page_name.'.en.php') || file_exists($system_page_name.'.es.php') || file_exists($system_page_name.'.en.html') || file_exists($system_page_name.'.es.html') || file_exists($system_page_name.'/index.en.php') || file_exists($system_page_name.'/index.es.php') || file_exists($system_page_name.'/index.en.html') || file_exists($system_page_name.'/index.es.html')) {
 
 		$protected_file = 1;
 
+	} else if (!file_exists($wiki_dir_name) && !file_exists($wiki_dir_name.'.en.reset') && !file_exists($wiki_dir_name.'.es.reset')) {
+
+		$no_parent = 1;
+
 	}
 
-	if (!isset($protected_file)) {
+	echo $wiki_dir_name;
+
+	if (!isset($protected_file) && !isset($no_parent)) {
 
 		// If form data has been sent, write it to the corresponding file
 		if (isset($_POST['type']) && $_POST['type'] == 'wiki_form') {
 
-			$command = 'mkdir -p $(dirname '.$wiki_base_name.') 2>&1';
-			exec($command, $cmd_output);
+			if (!file_exists($wiki_dir_name)) {
+				$command = 'mkdir -p '.$wiki_dir_name.' 2>&1';
+				exec($command, $cmd_output);
+				$command = 'mv '.$wiki_dir_name.'.en.reset '.$wiki_dir_name.'/index.en.reset 2>&1';
+				exec($command, $cmd_output);
+				$command = 'mv '.$wiki_dir_name.'.es.reset '.$wiki_dir_name.'/index.es.reset 2>&1';
+				exec($command, $cmd_output);
+			}
 
 			// Write English wiki file
 			file_put_contents($wiki_file_en, '% TITLE='.$_POST['title_en']."\n");
@@ -77,13 +97,13 @@
 			// Generate those files in the build directory
 			$wiki_create_script = strstr(getcwd(), '/build', 1).'/wiki_create';
 			$wiki_dir = strstr(getcwd(), '/build', 1).'/wiki/';
-			$command = $wiki_create_script.' /'.$page.'.en.reset 2>&1';
+			$command = $wiki_create_script.' '.$wiki_file_en.' 2>&1';
 			exec($command, $cmd_output);
-			$command = $wiki_create_script.' /'.$page.'.es.reset 2>&1';
+			$command = $wiki_create_script.' '.$wiki_file_es.' 2>&1';
 			exec($command, $cmd_output);
-			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' add '.$page.'.en.reset '.$page.'.es.reset 2>&1';
+			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' add -A 2>&1';
 			exec($command, $cmd_output);
-			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' commit -m "'.$_SESSION['user_id'].'" '.$page.'.en.reset '.$page.'.es.reset 2>&1';
+			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' commit -m "'.$_SESSION['user_id'].' - '.$wiki_page_name.'" 2>&1';
 			exec($command, $cmd_output);
 			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' push origin master 2>&1';
 			exec($command, $cmd_output);
@@ -145,13 +165,35 @@
 
 <?php
 
-	if (isset($protected_file)) {
+	if (isset($protected_file) || isset($no_parent)) {
 
 ?>
 
 <p class="error">Sorry, you can not edit this file.</p>
+
+<?php
+
+		if (isset($protected_file)) {
+
+?>
+
 <p>It may be a system file. Remember users can only edit wiki files. Please, select a different one.</p>
 <p>If you think this file should be edited, contact a developer or join the project and help us developing this website!</p>
+
+<?php
+
+		} else {
+
+?>
+
+<p>You are going too fast! Apparently, this page is orphan...</p>
+<p>Please, <?php echo '<a href="./?page='.$dir.'/">edit its parent first!</a>'; ?></p>
+
+<?php
+
+		}
+
+?>
 
 <script>
 
@@ -166,7 +208,7 @@
 		var parsed_content;
 
 		parsed_content = '<header><hgroup><h1>#</h1><h2></h2></hgroup></header>';
-		parsed_content += '<article><p class="centered extra_margin"><img src="/uploads/marx-brothers-404.jpg" alt="marx-brothers-404"></p></article>';
+		parsed_content += '<article><p class="centered extra_margin"><img src="/images/marx-brothers-doh.jpg" alt="marx-brothers-doh"></p></article>';
 		parsed_content += '<footer><p class="section_title">#</p></footer>'
 		document.getElementById('content').insertAdjacentHTML("afterBegin", parsed_content);
 

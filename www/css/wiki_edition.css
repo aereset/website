@@ -35,6 +35,9 @@ body #page_wrapper {
 #content_edition p {
 	margin: 1em 3%;
 }
+#content_edition a {
+	color: #006699;
+}
 #content_edition article {
 	margin: 2%;
 	background: #ffffff;
