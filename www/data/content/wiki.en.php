@@ -64,8 +64,6 @@
 
 	}
 
-	echo $wiki_dir_name;
-
 	if (!isset($protected_file) && !isset($no_parent)) {
 
 		// If form data has been sent, write it to the corresponding file

@@ -22,7 +22,8 @@
 #
 
 
-for file in $(find $(dirname $(readlink -f $0))/wiki/ | grep -e "^.*\.reset$" | sed -e "s/^.*wiki\(.*\)/\1/"); do
-	$(dirname $(readlink -f $0))/wiki_create $file
-done
+source_dir=$(dirname $(readlink -f $0))
 
+for file in $(find $source_dir/wiki/ | grep -e "^.*\.reset$"); do
+	$source_dir/wiki_create $file
+done
