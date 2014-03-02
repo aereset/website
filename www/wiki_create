@@ -60,7 +60,7 @@ build_dir="$script_dir/build"
 gen_dir="$script_dir/gen"
 
 # Prepare file and directory
-dirname=$(dirname $1)
+dirname=$(dirname $1 | sed -e 's@.*/www/wiki@@')
 filename=$(basename $1 | cut -d. -f1)
 language=$(basename $1 | cut -d. -f2)
 gen_file=$build_dir$dirname/$filename.$language.html
