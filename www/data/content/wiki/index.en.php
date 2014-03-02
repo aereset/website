@@ -166,6 +166,7 @@
 <section id="content_edition">
 <header>
 	<hgroup>
+		<a class="float_right" href=/en/wiki/upload/>Upload file</a>
 		<h1>Edit</h1>
 	</hgroup>
 </header>
