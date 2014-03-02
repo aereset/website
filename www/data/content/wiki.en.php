@@ -69,12 +69,22 @@
 		// If form data has been sent, write it to the corresponding file
 		if (isset($_POST['type']) && $_POST['type'] == 'wiki_form') {
 
+			$wiki_create_script = strstr(getcwd(), '/build', 1).'/wiki_create';
+
 			if (!file_exists($wiki_dir_name)) {
+
+				// Prepare path
 				$command = 'mkdir -p '.$wiki_dir_name.' 2>&1';
 				exec($command, $cmd_output);
 				$command = 'mv '.$wiki_dir_name.'.en.reset '.$wiki_dir_name.'/index.en.reset 2>&1';
 				exec($command, $cmd_output);
 				$command = 'mv '.$wiki_dir_name.'.es.reset '.$wiki_dir_name.'/index.es.reset 2>&1';
+				exec($command, $cmd_output);
+
+				// Generate files in the build directory
+				$command = $wiki_create_script.' '.$wiki_dir_name.'/index.en.reset 2>&1';
+				exec($command, $cmd_output);
+				$command = $wiki_create_script.' '.$wiki_dir_name.'/index.es.reset 2>&1';
 				exec($command, $cmd_output);
 			}
 
@@ -92,13 +102,14 @@
 			file_put_contents($wiki_file_es, '% KEYWORDS='.$_POST['keywords_es']."\n", FILE_APPEND);
 			file_put_contents($wiki_file_es, preg_replace('/(\r\n)|(\r)/', "\n", $_POST['wiki_content_es']), FILE_APPEND);
 
-			// Generate those files in the build directory
-			$wiki_create_script = strstr(getcwd(), '/build', 1).'/wiki_create';
-			$wiki_dir = strstr(getcwd(), '/build', 1).'/wiki/';
+			// Generate files in the build directory
 			$command = $wiki_create_script.' '.$wiki_file_en.' 2>&1';
 			exec($command, $cmd_output);
 			$command = $wiki_create_script.' '.$wiki_file_es.' 2>&1';
 			exec($command, $cmd_output);
+
+			// Commit changes
+			$wiki_dir = strstr(getcwd(), '/build', 1).'/wiki/';
 			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' add -A 2>&1';
 			exec($command, $cmd_output);
 			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' commit -m "'.$_SESSION['user_id'].' - '.$page.'/" 2>&1';
