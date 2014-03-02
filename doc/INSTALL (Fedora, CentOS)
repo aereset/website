@@ -1,11 +1,19 @@
 
+Setting install path variable:
+
+  $ INSTALL_PATH='/var/www/html/reset'
+
 It is better to execute the following steps as root:
 
   $ su
 
+Setting install path variable:
+
+  # INSTALL_PATH='/var/www/html/reset'
+
 Installing dependencies (you may need to install nodejs manually! *):
 
-  # yum install httpd php php-gettext git gitk nodejs mysql-server php-mysql
+  # yum install httpd php git gitk nodejs mysql-server php-mysql
   # service mysqld start
   # service httpd start
   # chkconfig httpd on
@@ -22,39 +30,40 @@ provilege tables):
 
 Creating the database:
 
+  # cp $INSTALL_PATH/doc/commands.sql /tmp/commands.sql
   # mysql --default-character-set=utf8 --local-infile -u root
-  mysql> source /var/www/html/reset/doc/commands.sql;
+  mysql> source /tmp/commands.sql;
   mysql> exit
+  # rm -f /tmp/commands.sql
 
 Cloning the Git repository:
 
-  # cd /var/www/html
-  # git clone git@github.com:aereset/website.git /var/www/html/reset
+  # git clone git@github.com:aereset/website.git $INSTALL_PATH
 
 Apache and SELinux configuration:
 
   # echo -e "127.0.0.1  local.reset.etsii.upm.es" >> /etc/hosts
-  # cp /var/www/html/reset/doc/apache/httpd.conf /etc/httpd/conf.d/local.reset.etsii.upm.es_80.conf
-  # semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/reset/www'
-  # restorecon -v '/var/www/html/reset/www'
+  # cp $INSTALL_PATH/doc/httpd.conf /etc/httpd/conf.d/local.reset.etsii.upm.es_80.conf
+  # semanage fcontext -a -t httpd_sys_rw_content_t "$INSTALL_PATH/www"
+  # restorecon -v "$INSTALL_PATH/www"
 
 Cloning the website contents:
 
-  # git clone https://github.com/aereset/website_contents.git wiki
+  # git clone https://github.com/aereset/website_contents.git $INSTALL_PATH/www/wiki
 
 Modify project permissions (replace <username> with your user name so you will
 not need to be root to make changes in the project):
 
-  # chown -R <username>:<username> /var/www/html/reset
+  # chown -R <username>:<username> $INSTALL_PATH
 
 Directories which Apache will own *:
 
-  # mkdir -p /var/www/html/reset/www/uploads
-  # chown -R apache:apache /var/www/html/reset/www/uploads
-  # chown -R apache:apache /var/www/html/reset/www/wiki
+  # mkdir -p $INSTALL_PATH/www/uploads
+  # chown -R apache:apache $INSTALL_PATH/www/uploads
+  # chown -R apache:apache $INSTALL_PATH/www/wiki
 
 * For server/production (not developing) instalation, we may prefer to let
-  Apache own the full directory /var/www/html/reset. This way, we will be able
+  Apache own the full directory $INSTALL_PATH. This way, we will be able
   to update the website and regenerate any contents directly through the web
   interface.
 
@@ -68,21 +77,22 @@ Exit root session:
 
 Creating the configuration file:
 
-  $ cp /var/www/html/reset/doc/apache/config.php /var/www/html/reset/www
+  $ cp $INSTALL_PATH/doc/config.php $INSTALL_PATH/www
 
-You may want to change "/var/www/html/reset/www/config.php" file with custom
+You may want to change "$INSTALL_PATH/www/config.php" file with custom
 parameters in order to make everything work in your server. If you change the
 salt field, then you'll need to change the admin password, as the hash was
 generated without any salt the first time.
 
 Generating content:
 
-  $ /var/www/html/reset/www/generate
-  $ /var/www/html/reset/www/wiki_recreate_all
+  $ cd $INSTALL_PATH/www
+  $ ./generate
+  $ ./wiki_recreate_all
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-THE FOLLOWING STEPS ARE FOR SERVER-SETUP ONLY (NOT FOR DEVELOPING)
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+THE FOLLOWING STEPS ARE FOR PRODUCTION-SETUP ONLY (NOT FOR DEVELOPING)
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 In order to allow our server to send mail, we may need to edit SELinux rules:
 
