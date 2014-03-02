@@ -103,7 +103,7 @@
 			exec($command, $cmd_output);
 			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' add -A 2>&1';
 			exec($command, $cmd_output);
-			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' commit -m "'.$_SESSION['user_id'].' - '.$wiki_page_name.'" 2>&1';
+			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' commit -m "'.$_SESSION['user_id'].' - '.$page.'/" 2>&1';
 			exec($command, $cmd_output);
 			$command = 'git --git-dir='.$wiki_dir.'.git --work-tree='.$wiki_dir.' push origin master 2>&1';
 			exec($command, $cmd_output);
