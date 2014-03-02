@@ -41,7 +41,8 @@
 
 				if ($name != "") {
 
-					$file_extension = pathinfo($_FILES["file"]["name"])['extension'];
+					$file_extension = pathinfo($_FILES["file"]["name"]);
+					$file_extension = $file_extension['extension'];
 
 					if ($file_extension != "") $name = $name . '.' . $file_extension;
 
@@ -53,7 +54,6 @@
 					} else {
 
 						$command = 'rsync -r '.strstr(getcwd(), '/build', 1).'/uploads '.strstr(getcwd(), '/build', 1).'/build ';
-						echo $command;
 						exec($command, $cmd_output);
 
 					}
