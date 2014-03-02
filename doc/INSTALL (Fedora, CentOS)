@@ -102,6 +102,15 @@ In order to allow Apache executing node, we may neet to edit SELinux rules:
 
   # setsebool -P httpd_execmem 1
 
+In order to allow Apache to execute generation scripts:
+
+  # semanage fcontext -a -t httpd_sys_script_exec_t /var/www/html/reset/www/wiki_recreate_all
+  # restorecon /var/www/html/reset/www/wiki_recreate_all
+  # semanage fcontext -a -t httpd_sys_script_exec_t /var/www/html/reset/www/wiki_create
+  # restorecon /var/www/html/reset/www/wiki_create
+  # semanage fcontext -a -t httpd_sys_script_exec_t /var/www/html/reset/www/generate
+  # restorecon /var/www/html/reset/www/generate
+
 In order to allow Apache to connect through SSH and do git push:
 
   # setsebool -P httpd_can_network_connect 1
