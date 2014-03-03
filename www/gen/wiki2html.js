@@ -27,7 +27,6 @@
  *
  *   - Anchors: allow optional title parameter.
  *   - Images: review the code and complete it: figures, pictures, images...
- *   - Titles: wrap titles in <hgroup> if possible.
  *   - Tables: caption, thead, tbody... (see content-example.php)
  *   - List items with sub items (https://github.com/lahdekorpi/Wiky.php/blob/master/wiky.inc.php)
  */
@@ -85,7 +84,9 @@ function section_nav(wikicode)
 		section_nav_list = '<nav id="section_nav"><ul>';
 
 		for (i=0; i<heading_1_matches.length; i++) {
-			section_nav_list += '<li><a href="#' + heading_1_matches[i].replace(heading_1_regex, "$1") + '">'  + i + ' - ' + heading_1_matches[i].replace(heading_1_regex, "$1") +  '</a></li>';
+			var title = heading_1_matches[i].replace(heading_1_regex, "$1");
+			var title_clean = title.replace(/[^\w-]/gm, '');
+			section_nav_list += '<li><a href="#' + title_clean + '">'  + i + ' - ' + title +  '</a></li>';
 		}
 
 		section_nav_list += '</ul></nav>';
@@ -105,7 +106,15 @@ function headers(wikicode)
 	wikicode = wikicode.replace(/^={4}([^\[=]*)={4}$/gm, '<h4>$1</h4>');
 	wikicode = wikicode.replace(/^={3}([^\[=]*)={3}$/gm, '<h3>$1</h3>');
 	wikicode = wikicode.replace(/^={2}([^\[=]*)={2}$/gm, '<h2>$1</h2>');
+	var heading_1_regex = /^={1}([^\[=]*)={1}$/gm;
+	var heading_1_matches = wikicode.match(heading_1_regex);
 	wikicode = wikicode.replace(/^={1}([^\[=]*)={1}$/gm, '</article><article><h1 id="$1">$1</h1>');
+	for (i=0; i<heading_1_matches.length; i++) {
+		var title = heading_1_matches[i].replace(heading_1_regex, "$1");
+		var title_clean = title.replace(/[^\w-]/gm, '');
+		var regex = new RegExp('article><article><h1 id="(.*)">' + title + '</h1>', 'gm');
+		wikicode = wikicode.replace(regex, 'article><article><h1 id="' + title_clean + '">' + title + '</h1>');
+	}
 	wikicode = wikicode + '\n</article>'
 	wikicode = wikicode.replace(/<article>[\s]*?<\/article>/gm, ''); // First article is usually empty
 
