@@ -109,11 +109,13 @@ function headers(wikicode)
 	var heading_1_regex = /^={1}([^\[=]*)={1}$/gm;
 	var heading_1_matches = wikicode.match(heading_1_regex);
 	wikicode = wikicode.replace(/^={1}([^\[=]*)={1}$/gm, '</article><article><h1 id="$1">$1</h1>');
-	for (i=0; i<heading_1_matches.length; i++) {
-		var title = heading_1_matches[i].replace(heading_1_regex, "$1");
-		var title_clean = title.replace(/[^\w-]/gm, '');
-		var regex = new RegExp('article><article><h1 id="(.*)">' + title + '</h1>', 'gm');
-		wikicode = wikicode.replace(regex, 'article><article><h1 id="' + title_clean + '">' + title + '</h1>');
+	if (heading_1_matches && heading_1_matches.length > 0) {
+		for (i=0; i<heading_1_matches.length; i++) {
+			var title = heading_1_matches[i].replace(heading_1_regex, "$1");
+			var title_clean = title.replace(/[^\w-]/gm, '');
+			var regex = new RegExp('article><article><h1 id="(.*)">' + title + '</h1>', 'gm');
+			wikicode = wikicode.replace(regex, 'article><article><h1 id="' + title_clean + '">' + title + '</h1>');
+		}
 	}
 	wikicode = wikicode + '\n</article>'
 	wikicode = wikicode.replace(/<article>[\s]*?<\/article>/gm, ''); // First article is usually empty
