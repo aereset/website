@@ -15,7 +15,7 @@ function edit_page() {
 	document.getElementById('content').getElementsByTagName('header')[0].insertAdjacentHTML("afterBegin", content);
 
 	document.getElementById('edit_page').style.cssFloat = 'right';
-	document.getElementById('edit_page').style.margin = '1.2em';
+	document.getElementById('edit_page').style.margin = '.5em';
 }
 
 window.addEventListener('load', function() {
