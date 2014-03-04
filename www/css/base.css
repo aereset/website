@@ -1,6 +1,6 @@
 /*********************************** Global ************************************/
 body,div,span,
-header,hgroup,nav,menu,section,article,aside,footer,
+header,nav,menu,section,article,aside,footer,
 h1,h2,h3,h4,h5,h6,
 dl,dt,dd,ul,ol,li,
 pre,code,strong,address,cite,em,sub,sup,p,blockquote,img,a,q,
@@ -24,7 +24,7 @@ caption,canvas,details,figcaption,figure,summary,time,mark,audio,video {
 	background: transparent;
 }
 article,aside,canvas,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section,summary {
+footer,header,menu,nav,section,summary {
     display: block;
 }
 ol, ul, li {
@@ -180,23 +180,23 @@ time.news_pubdate {
 }
 
 /******************************* Website's Header ******************************/
-#w_header a:visited,
-#w_header a:focus,
-#w_header a:hover {
+#a_header:visited,
+#a_header:focus,
+#a_header:hover {
 	color: #484848;
 	text-decoration: none;
 }
-#w_header hgroup {
+#w_header h1,
+#w_header h2 {
 	text-shadow: 0 0 5px white, 0 0 10px white;
 	color: #000000;
+	font-weight: bold;
 }
 #w_header h1 {
 	font-size: 350%;
-	font-weight: bold;
 }
 #w_header h2 {
 	font-size: 200%;
-	font-weight: bold;
 }
 
 /*********************************** Main Nav **********************************/
@@ -323,7 +323,7 @@ time.news_pubdate {
 #content > header {
 	border-radius: 2em 2em 0 0;
 }
-#content > header hgroup {
+#content > header {
 	padding: 1em;
 }
 #content > header h1 {
