@@ -18,9 +18,7 @@
 
 <section id="content">
 <header>
-	<hgroup>
-		<h1>Upload</h1>
-	</hgroup>
+	<h1>Upload</h1>
 </header>
 <article>
 

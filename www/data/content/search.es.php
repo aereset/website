@@ -9,10 +9,8 @@ if ($_GET['search_for']) {
 ?>
 <section id="content">
 	<header>
-		<hgroup>
-			<h1>Búsqueda</h1>
-			<h2>Basada en los resultados de Google</h2>
-		</hgroup>
+		<h1>Búsqueda</h1>
+		<h2>Basada en los resultados de Google</h2>
 	</header>
 	<article>
 		<form accept-charset="utf-8" method="get" action="./">

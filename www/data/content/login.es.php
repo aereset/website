@@ -14,15 +14,11 @@
 
 <section id="content">
 <header>
-	<hgroup>
-		<h1>Iniciar sesión</h1>
-	</hgroup>
+	<h1>Iniciar sesión</h1>
 </header>
 <article>
 	<header>
-		<hgroup>
-			<h1 id="Formulario_de_acceso">Formulario de acceso</h1>
-		</hgroup>
+		<h1 id="Formulario_de_acceso">Formulario de acceso</h1>
 		<hr />
 	</header>
 

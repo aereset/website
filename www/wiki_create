@@ -84,7 +84,7 @@ cat $templates_dir/header.$language.html           | \
 cat $templates_dir/nav.$language.html >> $gen_file
 
 # Parse content
-echo "<section id=\"content\"><header><hgroup><h1>${file_data_title}</h1><h2>${file_data_subtitle}</h2></hgroup></header><script src=\"/js/edit_page.js\"></script>" >> $gen_file
+echo "<section id=\"content\"><header><h1>${file_data_title}</h1><h2>${file_data_subtitle}</h2></header><script src=\"/js/edit_page.js\"></script>" >> $gen_file
 echo "$(cat $1 | node $gen_dir/parse_file.js)" >> $gen_file
 echo "<footer><p class=\"section_title\">${file_data_title}</p></footer></section>" >> $gen_file
 

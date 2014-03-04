@@ -9,7 +9,7 @@ function create_header(lang) {
 		title = document.getElementById('form_title_en').value;
 		subtitle = document.getElementById('form_subtitle_en').value;
 	}
-	header = '<header><hgroup><h1>' + title + '</h1><h2>' + subtitle + '</h2></hgroup></header>';
+	header = '<header><h1>' + title + '</h1><h2>' + subtitle + '</h2></header>';
 	return header;
 }
 

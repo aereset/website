@@ -165,10 +165,8 @@
 
 <section id="content_edition">
 <header>
-	<hgroup>
-		<a class="float_right" href=/en/wiki/upload/>Upload file</a>
-		<h1>Edit</h1>
-	</hgroup>
+	<a class="float_right" href=/en/wiki/upload/>Upload file</a>
+	<h1>Edit</h1>
 </header>
 
 <article>
@@ -217,7 +215,7 @@
 
 		var parsed_content;
 
-		parsed_content = '<header><hgroup><h1>#</h1><h2></h2></hgroup></header>';
+		parsed_content = '<header><h1>#</h1></header>';
 		parsed_content += '<article><p class="centered extra_margin"><img src="/images/marx-brothers-doh.jpg" alt="marx-brothers-doh"></p></article>';
 		parsed_content += '<footer><p class="section_title">#</p></footer>'
 		document.getElementById('content').insertAdjacentHTML("afterBegin", parsed_content);

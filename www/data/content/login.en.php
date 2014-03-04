@@ -14,15 +14,11 @@
 
 <section id="content">
 <header>
-	<hgroup>
-		<h1>Log in</h1>
-	</hgroup>
+	<h1>Log in</h1>
 </header>
 <article>
 	<header>
-		<hgroup>
-			<h1 id="Acess_form">Access form</h1>
-		</hgroup>
+		<h1 id="Acess_form">Access form</h1>
 		<hr />
 	</header>
 

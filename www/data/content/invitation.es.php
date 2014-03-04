@@ -1,14 +1,10 @@
 <section id="content">
 <header>
-	<hgroup>
-		<h1>Invitación</h1>
-	</hgroup>
+	<h1>Invitación</h1>
 </header>
 <article>
 	<header>
-		<hgroup>
-			<h1>¡Bienvenid@!</h1>
-		</hgroup>
+		<h1>¡Bienvenid@!</h1>
 		<hr />
 	</header>
 

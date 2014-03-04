@@ -12,9 +12,7 @@
 
 <section id="content">
 <header>
-	<hgroup>
-		<h1>Mi cuenta</h1>
-	</hgroup>
+	<h1>Mi cuenta</h1>
 </header>
 <article>
 	<nav class="tabs_nav">

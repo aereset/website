@@ -18,9 +18,7 @@
 
 <section id="content">
 <header>
-	<hgroup>
-		<h1>My account</h1>
-	</hgroup>
+	<h1>My account</h1>
 </header>
 <article>
 	<nav class="tabs_nav">
