@@ -10,7 +10,7 @@ function add_social_links() {
 
 	// Twitter
 	content += '<a href="http://twitter.com/#!/Reset_ETSII" onmouseover=\'document.twitter.src="/images/banners/icon_twitter_on.png"\' onmouseout=\'document.twitter.src="/images/banners/icon_twitter_off.png"\' ><img src="/images/banners/icon_twitter_off.png" name="twitter" alt="twitter_icon_image" /></a>';
-	
+
 	// Youtube
 	content += '<a href="http://www.youtube.com/user/AEReset" onmouseover=\'document.youtube.src="/images/banners/icon_youtube_on.png"\' onmouseout=\'document.youtube.src="/images/banners/icon_youtube_off.png"\' ><img src="/images/banners/icon_youtube_off.png" name="youtube" alt="youtube_icon_image" /></a>';
 
@@ -19,7 +19,7 @@ function add_social_links() {
 
 	content += '</div>';
 
-	document.getElementById('w_header').insertAdjacentHTML("afterBegin", content);
+	document.getElementById('w_header').insertAdjacentHTML("beforeBegin", content);
 
 	var parent_element = document.getElementById('social_networks');
 	var child_elements = parent_element.getElementsByTagName('a');
