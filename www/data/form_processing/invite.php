@@ -43,28 +43,7 @@
 
 	if ($result) {
 
-		require_once(strstr(getcwd(), '/build', 1).'/data/class.phpmailer.php');
-
-		$mail = new PHPMailer();
-		$mail->IsSMTP();
-		$mail->SMTPDebug = 0;
-		$mail->SMTPAuth = true;
-		$mail->SMTPSecure = 'ssl';
-		$mail->Host = $email_host;
-		$mail->Port = 465;
-		$mail->Username = $email_user;
-		$mail->Password = $email_pass;
-		$mail->SetFrom($email_from_mail, $email_from_name);
-		$mail->Subject = "NO REPLY";
-		$mail->Body = "You have an invitation! Use the link bellow to use it:\n\nhttp://".$_SERVER['HTTP_HOST']."/invitation/?key=".$invitation_key;
-		$mail->AddAddress($sd['email']);
-
-		if ($mail->Send()) {
-			echo $invitation_created;
-		} else {
-			echo $err_sending_mail;
-			echo '<p class="warning">Share <a href="/invitation/?key='.$invitation_key.'">the invitation link that has been created</a> with your friend for him/her to accept it. Remember the invitation can only be used once and will expire in <strong>48 hours</strong>.</p>';
-		}
+		echo '<p class="warning">Share <a href="/invitation/?key='.$invitation_key.'">the invitation link that has been created</a> with your friend for him/her to accept it. Remember the invitation can only be used once and will expire in <strong>48 hours</strong>.</p>';
 
 	} else {
 

@@ -36,21 +36,23 @@
 		</ul>
 	</nav>
 	<div class="tabs_nav_div"></div>
-	<p>Puedes invitar a otras personas a unirse a nosotros o compartir permisos con otros usuarios. Ten en cuenta que todas estas acciones serán registradas y asociadas a tu usuario por razones de seguridad, así que intenta crear invitaciones sólo para personas en quien confíes o reduce sus permisos a los mínimos necesarios.</p>
 
 <?php
 
 	require_once(strstr(getcwd(), '/build', 1).'/data/form_to_db.php');
 
-	if (form_to_db('invite', array('email*', 'admin', 'invitations', 'banners', 'news', 'wiki'))) {
+	if (form_to_db('invite', array('admin', 'invitations', 'banners', 'news', 'wiki'))) {
 
 ?>
+
+	<p>Puedes invitar a otras personas a unirse a nosotros o compartir permisos con otros usuarios. Ten en cuenta que todas estas acciones serán registradas y asociadas a tu usuario por razones de seguridad, así que intenta crear invitaciones sólo para personas en quien confíes o reduce sus permisos a los mínimos necesarios.</p>
 
 	<form action="" method="post">
 		<fieldset>
 			<legend>Formulario de invitación:</legend>
 			<p class="info">Por favor, selecciona los permisos que quieras compartir con el usuario. Puedes compartir, como máximo, tus propios permisos (aquellos que se listan a continuación):</p>
 			<div class="form_wrapper">
+
 <?php
 
 	if (isset($_SESSION['admin_permissions']) && $_SESSION['admin_permissions'] == 1) {
@@ -108,10 +110,6 @@
 	}
 
 ?>
-			</div>
-			<div class="form_wrapper">
-				<label for="form_email" class="singleline">Correo electrónico de tu amig@: <span class="form_required" title="This field is required">*</span></label>
-				<input type="email" maxlength="60" name="email" id="form_email" class="singleline" required="required" />
 			</div>
 		</fieldset>
 		<input  type="hidden" name="type" value="invite" />

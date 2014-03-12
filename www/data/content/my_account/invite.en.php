@@ -36,15 +36,16 @@
 		</ul>
 	</nav>
 	<div class="tabs_nav_div"></div>
-	<p>You can invite other people to join us or share permissions with other users. Notice that all this actions will be registered and associated with your user for security reasons, so try to create invitations only for people you trust or reduce their permissions to the minimum required.</p>
 
 <?php
 
 	require_once(strstr(getcwd(), '/build', 1).'/data/form_to_db.php');
 
-	if (form_to_db('invite', array('email*', 'admin', 'invitations', 'banners', 'news', 'wiki'))) {
+	if (form_to_db('invite', array('admin', 'invitations', 'banners', 'news', 'wiki'))) {
 
 ?>
+
+	<p>You can invite other people to join us or share permissions with other users. Notice that all this actions will be registered and associated with your user for security reasons, so try to create invitations only for people you trust or reduce their permissions to the minimum required.</p>
 
 	<form action="" method="post">
 		<fieldset>
@@ -109,10 +110,6 @@
 	}
 
 ?>
-			</div>
-			<div class="form_wrapper">
-				<label for="form_email" class="singleline">Your friend's email: <span class="form_required" title="This field is required">*</span></label>
-				<input type="email" maxlength="60" name="email" id="form_email" class="singleline" required="required" />
 			</div>
 		</fieldset>
 		<input  type="hidden" name="type" value="invite" />
