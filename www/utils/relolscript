@@ -7,7 +7,7 @@
 # as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
 #
 
-for file in $(cat TODO.en.reset | grep ??? | sed -e 's/.*???\ \([^\ ]*\)\ .*/\1/' | tail -n +4); do
+for file in $(cat ../wiki/TODO.en.reset | grep ??? | sed -e 's/.*???\ \([^\ ]*\)\ .*/\1/' | tail -n +4); do
 	./lolscript /en/$file;
 	./lolscript /es/$file;
 done
