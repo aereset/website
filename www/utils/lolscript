@@ -1,0 +1,65 @@
+#!/bin/bash
+
+#
+# Copyright © 2014 Peque
+# This work is free. You can redistribute it and/or modify it under the
+# terms of the Do What The Fuck You Want To Public License, Version 2,
+# as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
+#
+
+src_domain="reset.etsii.upm.es"
+page=$1
+uploads_dir="/var/www/html/reset/www/uploads"
+wiki_dir="/var/www/html/reset/www/wiki"
+language=$(echo $page | sed -e 's/^\/\(..\)\/.*$/\1/')
+filename=$(echo $page | sed -e 's/.*\/\([^\/]*\)\/$/\1/')
+path=$(echo $page | sed -e 's/^\/..\/\(.*\)\/[^\/]*\/$/\1/')
+
+raw=$(curl -s http://reset.etsii.upm.es$page)
+
+title=$(echo "$raw" | grep -e '<h1>' | sed -e 's/.*<h1>\(.*\)<\/h1>.*/\1/' | head -n 2 | tail -n 1)
+subtitle=$(echo "$raw" | grep -e '<h2>' | sed -e 's/.*<h2>\(.*\)<\/h2>.*/\1/' | head -n 2 | tail -n 1)
+description=$(echo "$raw" | grep -e '<meta\ name=\"description\"' | sed -e "s/.*content=\"\(.*\)\".*/\1/")
+keywords=$(echo "$raw" | grep -e '<meta\ name=\"keywords\"' | sed -e "s/.*content=\"\(.*\)\".*/\1/")
+
+# Clean the content section
+wiki_content=$(echo "$raw" | sed -n '/section\ id=\"content\"/,/<footer>/p' | sed -e 's/^[[:space:]]*\(.*\)*[[:space:]]*$/\1/' | sed -e 's/\t//g' | sed ':a;N;$!ba;s/\n//g' | sed -e 's/<section\ id=\"content\">\(.*\)<\/article><footer>/\1/' | sed -e ':a;$!{N;ba;};s_</nav>_\x1_g; s_<nav[^\x1]*\x1__g' | sed -e 's/<header>.*<\/header><article>\(.*\)/\1/')
+
+# Clean head and tail
+wiki_content=$(echo "$wiki_content" | sed -e 's/<header>//g' | sed -e 's/<\/header>//g' | sed -e 's/<hgroup>//g' | sed -e 's/<\/hgroup>//g' | sed -e 's/<article>//g' | sed -e 's/<\/article>//g')
+
+# h1
+wiki_content=$(echo "$wiki_content" | sed -e 's/<h1[^>]*>\([^<]*\)<\/h1>/=\1=\n/g')
+# h2
+wiki_content=$(echo "$wiki_content" | sed -e 's/<h2[^>]*>\([^<]*\)<\/h2>/==\1==\n/g')
+# hr
+wiki_content=$(echo "$wiki_content" | sed -e 's/<hr\ \/>/----\n\n/g')
+# p
+wiki_content=$(echo "$wiki_content" | sed -e 's/<p>//g' | sed -e 's/<\/p>/\n\n/g')
+# figure
+wiki_content=$(echo "$wiki_content" | sed -e 's/<\/figure>/<\/figure>\n\n/g')
+# ul
+wiki_content=$(echo "$wiki_content" | sed -e 's/<\/ul>/<\/ul>\n\n/g')
+# ol
+wiki_content=$(echo "$wiki_content" | sed -e 's/<\/ol>/<\/ol>\n\n/g')
+# p.info, p.warning, p.error
+wiki_content=$(echo "$wiki_content" | sed -e 's/<p\ class=\"info\">/?\ /g')
+wiki_content=$(echo "$wiki_content" | sed -e 's/<p\ class=\"warning\">/??\ /g')
+wiki_content=$(echo "$wiki_content" | sed -e 's/<p\ class=\"error\">/???\ /g')
+# images
+images=$(echo "$wiki_content" | grep -e '.*src="/images/[^"]*".*' | sed -e 's/.*src=.\(\/images\/[^"]*\)..*/\1/g')
+for image in $images; do
+	newimage=$(echo $image | sed -e 's@/images/\(.*\)@\1@' | tr '/' '_')
+	wget $src_domain$image -O $uploads_dir/$newimage
+	wiki_content=$(echo "$wiki_content" | sed -e "s@$image@/uploads/$newimage@")
+done
+
+# Print contents to target file
+mkdir -p $wiki_dir/$path
+wiki_target_file="$wiki_dir/$path/$filename.$language.reset"
+echo "% TITLE=$title" > $wiki_target_file
+echo "% SUBTITLE=$subtitle" >> $wiki_target_file
+echo "% DESCRIPTION=$description" >> $wiki_target_file
+echo "% KEYWORDS=$keywords" >> $wiki_target_file
+echo "$wiki_content" >> $wiki_target_file
+
