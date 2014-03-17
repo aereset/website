@@ -71,10 +71,10 @@ mkdir -p $build_dir$dirname
 # Get content information
 file_data=$(cat $1 | grep -e "^%[[:space:]]*[A-Z]*=.*$")
 
-file_data_title=$(echo "$file_data" | grep "% TITLE=" | sed -e "s/% TITLE=\(.*\)/\1/")
-file_data_subtitle=$(echo "$file_data" | grep "% SUBTITLE=" | sed -e "s/% SUBTITLE=\(.*\)/\1/")
-file_data_description=$(echo "$file_data" | grep "% DESCRIPTION=" | sed -e "s/% DESCRIPTION=\(.*\)/\1/")
-file_data_keywords=$(echo "$file_data" | grep "% KEYWORDS=" | sed -e "s/% KEYWORDS=\(.*\)/\1/")
+file_data_title=$(echo "$file_data" | grep "% TITLE=" | sed -e "s@\/@&#47;@g" | sed -e "s/% TITLE=\(.*\)/\1/")
+file_data_subtitle=$(echo "$file_data" | grep "% SUBTITLE=" | sed -e "s@\/@&#47;@g" | sed -e "s/% SUBTITLE=\(.*\)/\1/")
+file_data_description=$(echo "$file_data" | grep "% DESCRIPTION=" | sed -e "s@\/@&#47;@g" | sed -e "s/% DESCRIPTION=\(.*\)/\1/")
+file_data_keywords=$(echo "$file_data" | grep "% KEYWORDS=" | sed -e "s@\/@&#47;@g" | sed -e "s/% KEYWORDS=\(.*\)/\1/")
 
 # Add header and navigation sections
 cat $templates_dir/header.$language.html           | \
