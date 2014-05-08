@@ -2,7 +2,7 @@
 
 // TODO: remove this lines (print results instead of use redirection)
 if ($_GET['search_for']) {
-	$search_google_m = 'http://www.google.es/m/search?q=' . $_GET['search_for'] . '&hl=' . $lang . '&as_sitesearch=induforum.etsii.upm.es';
+	$search_google_m = 'http://www.google.es/m/search?q=' . $_GET['search_for'] . '&hl=' . $lang . '&as_sitesearch=reset.etsii.upm.es';
 	header("Location: " . $search_google_m);
 }
 
