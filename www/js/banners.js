@@ -15,8 +15,8 @@ function display_collaborate() {
 	// UPM
 	collaborate += '<p style="text-align:center;"><a href="http://www.upm.es/" title="Universidad Politécnica de Madrid"><img src="/images/banners/upm.png" alt="upm_logo" /></a></p>';
 	
-	// UPM
-	collaborate += '<p style="text-align:center;"><a href="http://www.bq.com/" title="Bq"><img src="/images/banners/bq.png" alt="bq_logo" /></a></p>';
+	// bq
+	collaborate += '<p style="text-align:center;"><a href="http://www.bq.com/" title="bq"><img src="/images/banners/bq.png" alt="bq_logo" /></a></p>';
 	
 	document.getElementById('collaborate_block').innerHTML = collaborate;
 
