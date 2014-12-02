@@ -90,10 +90,10 @@
 }
 #r_aside a {
 	font-style: inherit;
-	color: #006699;
+	color: #FFFFFF;
 }
 #r_aside a:visited {
-	color: #5C669A;
+	color: #E3E3E3;
 }
 #r_aside a.news_link {
 	display: block;
